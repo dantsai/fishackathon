@@ -590,3 +590,8 @@
 .formdescription {
   margin-bottom: 0;
 }
+
+#header h2 {
+    border-top: 1px solid #d3d3d3; 
+    border-bottom: 1px solid #d3d3d3;
+}
