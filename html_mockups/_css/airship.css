@@ -96,7 +96,7 @@
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
   h1, .h1 { font-size: 1.8em; margin-bottom: 15px; }
   h2, .h2 { font-size: 1.8em; margin-bottom: 20px; }
-  h3, .h3 { font-size: 1.8em; margin: 30px 0; }
+  h3, .h3 { font-size: 1.2em;  }
 
 	p { font-size: 1em; font-style: normal; text-align: left; margin: 0 0 15px; }
 	p img { margin: 0; }
@@ -591,7 +591,96 @@
   margin-bottom: 0;
 }
 
-#header h2 {
-    border-top: 1px solid #d3d3d3; 
+#header {
+    /*border-top: 1px solid #d3d3d3; */
     border-bottom: 1px solid #d3d3d3;
+    margin: 0px;
 }
+#header h3 {
+  font-size: 18px;
+}
+
+#header #headtitle {
+  text-align: left;
+}
+
+#header #headlog {
+  text-align: right;
+}
+
+#welcomeheader {
+  margin-top: 25px;
+}
+
+#welcomeheader p {
+  margin: 0;
+}
+#welcomeheader .welcome {
+  font-size: 1.5em;
+}
+
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+
+    .tab-links {
+      margin: 0;
+      margin-top: 35px;
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+    .tab-links a {
+        padding:9px 15px;
+        display:inline-block;
+        border-radius:6px 6px 0px 0px;
+        background:#7FB5DA;
+        font-size:16px;
+        font-weight:600;
+        color:#4c4c4c;
+        transition:all linear 0.15s;
+    }
+
+    .tab-links a:hover {
+        background:#a7cce5;
+        color: #fff;
+        text-decoration:none;
+    }
+ 
+    li.active a, li.active a:hover {
+        background:#a7cce5;
+        color:#fff;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:15px;
+        border-top: 1px solid #d3d3d3;
+
+        /*border-radius:3px;*/
+        /*box-shadow:-1px 1px 1px rgba(0,0,0,0.15);*/
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }

@@ -40,62 +40,57 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 <body class="home page page-id-272 page-template page-template-index-php">
 
 <div class="container">
-	<div id="header">
+	<div id="header" class="section">
 		<div class="one-half column left">
-			<h2>FIFA Fish Manager 2014</h2>
+			<h3 id="headtitle">FIFA Fish Manager 2014</h3>
 		</div>
 		<div class="one-half column right">
-			<h2><a href="#">Log Out</a></h2>
+			<h3 id="headlog"><a href="#">Log Out</a></h3>
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="sixteen columns">
-			<div class="section" id="about">
-				<div class="intro">
-				  <h1>GO FISH</h1>
-				</div>
-			</div>
-
-			<div class="section">
-				<form>
-				<div class="row">
-					<div class="six columns alpha">
-						<p class="right2 form2">User name:</p>
-						<p class="right2 form2">Password:</p>
-					</div>
-
-					<div class="eight columns alpha">
-						<input type="text" /><br />
-						<input type="text" /><br />
-						<input type="button" value="Log In" />
-						<p><a href="#">Create Account</a></p>
-					</div>
-
-				</div>
-			</div>
+		<div class="one-third column section"></div>
+		<div class="two-thirds column" id="welcomeheader">
+			<p class="welcome">Welcome, Professor X! You have
+			<p><a href="#">10 registration requests</a>
+			<p><a href="#">4 license requests</a></p>
+			<p><a href="#">5 bad guy reports</a></p>
 		</div>
 	</div>
 
-</div>	<!-- container --> 
+
+	<div class="tabs">
+	    <ul class="tab-links">
+	        <li class="active"><a href="#tab1">Registrations</a></li>
+	        <li><a href="#tab2">Licenses</a></li>
+	        <li><a href="#tab3">Reports</a></li>
+	    </ul>
+	 
+	    <div class="tab-content">
+	        <div id="tab1" class="tab active">
+	            <p>Tab #1 content goes here!</p>
+	            <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis.</p>
+	        </div>
+	 
+	        <div id="tab2" class="tab">
+	            <p>Tab #2 content goes here!</p>
+	            <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+	        </div>
+	 
+	        <div id="tab3" class="tab">
+	            <p>Tab #3 content goes here!</p>
+	            <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum ri.</p>
+	        </div>
+	    </div>
+	</div>
+
+</div>
 
 <!-- jQuery, jQuery Fallback and Scripts -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://www.eleventhedition.com/wp-content/themes/airship/js/carousel/jquery.flexslider-min.js"></script>
-<script src="http://www.eleventhedition.com/wp-content/themes/airship/js/app.js"></script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-11821023-1']);
-	_gaq.push(['_trackPageview']);
-
-	(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-</script>
+<script src="_js/script.js"></script>
 
 </body>
 </html>
