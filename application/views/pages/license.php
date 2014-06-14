@@ -1,1 +1,0 @@
-License detail page
