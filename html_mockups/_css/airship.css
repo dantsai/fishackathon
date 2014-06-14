@@ -202,6 +202,9 @@
   input[type="button"]:active {
     background: #14a8d1; }
 
+select {
+  width: 240px;
+}
 
 /* Menu
 ================================================== */

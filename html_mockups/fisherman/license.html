@@ -63,29 +63,32 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 		<select>
 <!-- options found at http://fishwise.org/index.php/science/production-method-guide -->
 <!-- pictures for types found at http://fishwise.org/images/stories/private_pdfs/info_binder_2010.pdf -->
+			<option>Choose your net type</option>
 			<option data-image="../_img/BottomTrawl.png">Bottom Trawl</option>
-			<option>Midwater Trawl</option>
-			<option>Gillnet</option>
-			<option>Purse Seine: FAD</option>
-			<option>Purse Seine: FAD Free</option>
+			<option data-image="../_img/midwaterTrawl.png">Midwater Trawl</option>
+			<option data-image="../_img/gillnet.png">Gillnet</option>
+			<option data-image="../_img/PurseSeine.png">Purse Seine: FAD</option>
+			<option data-image="../_img/PurseSeine.png">Purse Seine: FAD Free</option>
 		</select>
 	</div>
 
-	<div class="formfield subquestion">	
+	<div class="formfield subquestion">
 		<p class="left2 formdescription">Hooks and Lines</p>
 		<select>
-			<option>Longline</option>
-			<option>Bottom Longline</option>
-			<option>Handline</option>
+			<option>Choose your line type</option>
+			<option data-image="../_img/Longline.png">Longline</option>
+			<option data-image="../_img/BottomLongline.png">Bottom Longline</option>
+			<option data-image="../_img/Handline.png">Handline</option>
 		</select>
 	</div>
 
 	<div class="formfield subquestion">	
 		<p class="left2 formdescription">Other Gear Used </p>
 		<select>
-			<option>Dredge</option>
-			<option>Trap</option>
-			<option>Hand Methods</option>
+			<option>Select any other gear</option>
+			<option data-image="../_img/Dredge.png">Dredge</option>
+			<option data-image="../_img/Traps.png">Trap</option>
+			<option data-image="../_img/HandMethods.png">Hand Methods</option>
 			<option>None</option>
 		</select>
 	</div>
@@ -121,7 +124,7 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 <!-- for adding images to the dropdown -->
 <script src="../_js/msdropdown/jquery-1.9.0.min.js"></script>
 <script src="../_js/msdropdown/jquery.dd.min.js"></script>
-<script type="language/javascript">
+<script language="javascript">
 	$(document).ready(function(e) {
 	try {
 	$("body select").msDropDown();
