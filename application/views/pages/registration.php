@@ -1,0 +1,1 @@
+Registration detail page
