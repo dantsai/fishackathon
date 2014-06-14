@@ -15,6 +15,14 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: d637e0967dc66e9824345009ad74fbfdb1e4349f
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,6 +69,7 @@ GEM
     coffee-script-source (1.7.0)
     daemons (1.1.9)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.2.0)
     formtastic (2.3.0.rc3)
@@ -173,6 +182,7 @@ DEPENDENCIES
   annotate
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   json
   pg

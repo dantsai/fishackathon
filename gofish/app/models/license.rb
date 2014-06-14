@@ -14,5 +14,9 @@
 #  updated_at      :datetime
 #
 
+
 class License < ActiveRecord::Base
+	belongs_to :registration
+
+	FISH_TYPES = [ :perch, :halibut, :bass, :grouper, :shellfish ]
 end

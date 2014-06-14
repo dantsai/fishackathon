@@ -12,33 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :location_desc_string, %><br>
-    <%= f.text_field :location_desc_string, %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  
   <div class="field">
-    <%= f.label :phone_number %><br>
+    <%= f.label :phone_number, 'Phone Number' %><br>
     <%= f.text_field :phone_number %>
   </div>
+
   <div class="field">
-    <%= f.label :photo_url %><br>
-    <%= f.text_field :photo_url %>
+    <%= f.label :location_desc_string, 'Location Description' %><br>
+    <%= text_area_tag(:location_desc_string) %>
   </div>
-  <div class="field">
-    <%= f.label :boat_type %><br>
-    <%= f.text_field :boat_type %>
+
+   <div class="formfield"> 
+    <p class="left2 formdescription">Fish Type</p>
+    <%= f.select :boat_type, Registration::BOAT_TYPES %>
   </div>
-  <div class="field">
-    <%= f.label :registration_number %><br>
-    <%= f.text_field :registration_number %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

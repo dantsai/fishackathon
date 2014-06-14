@@ -11,35 +11,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+
+  <div class="container">
+  <form>
+  <div class="formfield">
+    <p class="left2 formdescription">Registration number:</p>
+    <input type="text" name="regnumber" id="regnumber">
   </div>
-  <div class="field">
-    <%= f.label :location_desc %><br>
-    <%= f.text_field :location_desc %>
+
+  <div class="formfield"> 
+    <p class="left2 formdescription">Fishing Location:</p>
+    <%= f.text_area :location_desc, :rows => 8 %>
   </div>
-  <div class="field">
-    <%= f.label :registration_id %><br>
-    <%= f.text_field :registration_id %>
+
+  <p> Gear Used</p>
+
+  <div class="formfield subquestion"> 
+    <p class="left2 formdescription">Net Type</p>
+    <select>
+<!--      options found at http://fishwise.org/index.php/science/production-method-guide -->
+      <option value="0">Bottom Trawl</option>
+      <option value="1">Midwater Trawl</option>
+      <option value="2">Gillnet</option>
+      <option value="3">Purse Seine: FAD</option>
+      <option value="4">Purse Seine: FAD Free</option>
+    </select>
   </div>
-  <div class="field">
-    <%= f.label :industry_type %><br>
-    <%= f.text_field :industry_type %>
+
+  <div class="formfield subquestion"> 
+    <p class="left2 formdescription">Hooks and Lines</p>
+    <select>
+      <option value="0">Longline</option>
+      <option value="1">Bottom Longline</option>
+      <option value="2">Handline</option>
+    </select>
   </div>
-  <div class="field">
-    <%= f.label :fish_type %><br>
-    <%= f.text_field :fish_type %>
+
+  
+
+  <div class="formfield subquestion"> 
+    <p class="left2 formdescription">Other Gear Used </p>
+    <select>
+      <option value="0">Dredge</option>
+      <option value="1">Trap</option>
+      <option value="2">Hand Methods</option>
+      <option>None</option>
+    </select>
   </div>
-  <div class="field">
-    <%= f.label :date_issued %><br>
-    <%= f.text_field :date_issued %>
+
+  <div class="formfield"> 
+    <p class="left2 formdescription">Fish Type</p>
+    <%= f.select :fish_type, License::FISH_TYPES %>
   </div>
-  <div class="field">
-    <%= f.label :date_expires %><br>
-    <%= f.datetime_select :date_expires %>
-  </div>
-  <div class="actions">
+
+  <div class="formfield"> 
     <%= f.submit %>
   </div>
+</div>  <!-- container --> 
+
 <% end %>
