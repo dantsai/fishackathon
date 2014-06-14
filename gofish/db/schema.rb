@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614191543) do
+ActiveRecord::Schema.define(version: 20140614193542) do
 
   create_table "licenses", force: true do |t|
     t.integer  "status"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140614191543) do
     t.datetime "date_expires"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "location_lat"
+    t.decimal  "location_lng"
   end
 
   create_table "registrations", force: true do |t|
@@ -35,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140614191543) do
     t.string   "registration_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "location_lat"
+    t.decimal  "location_lng"
   end
 
   create_table "reports", force: true do |t|
@@ -44,6 +48,8 @@ ActiveRecord::Schema.define(version: 20140614191543) do
     t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "location_lat"
+    t.decimal  "location_lng"
   end
 
 end

@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.dataTables
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function() {
+    $('.datatable').dataTable();
+} );

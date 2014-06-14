@@ -15,4 +15,7 @@
 #
 
 class Registration < ActiveRecord::Base
+	has_many :licenses
+	BOAT_TYPES = [ :canoe, :outrigger, :sailboat, :motorboat ]
+
 end

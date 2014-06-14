@@ -9,5 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require skeleton
+ *= require airship
+ *= require jquery.dataTables
  *= require_tree .
  */
+
+
+body { color:#646464; font-family:Open Sans, sans-serif; font-weight:normal; font-size:16px; }
+h1,h2,h3,h4,h5,h6 { color:#383838; font-family:Oswald, sans-serif; font-weight:Normal; font-size:28px; }
+.intro p { color:#646464; font-family:Open Sans, sans-serif; font-weight:Normal; font-size:20px; }
+.quote p { color:#646464; font-family:Open Sans, sans-serif; font-weight:Normal; font-size:20px; }
+a {color:#646464}a:hover {color:#1fb4dd}
+#menu li a, #menu ul li a:visited, #menu ul li a:active { color:#646464; font-family:Open Sans, sans-serif; font-weight:Normal; font-size:18px; }

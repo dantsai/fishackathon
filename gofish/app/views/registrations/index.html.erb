@@ -1,10 +1,10 @@
-<h1>Listing registrations</h1>
+<h1>Listing Registrations</h1>
 
 <table>
   <thead>
     <tr>
       <th>Status</th>
-      <th>Location desc string,</th>
+      <th>Location desc string</th>
       <th>Name</th>
       <th>Phone number</th>
       <th>Photo url</th>
@@ -20,7 +20,7 @@
     <% @registrations.each do |registration| %>
       <tr>
         <td><%= registration.status %></td>
-        <td><%= registration.location_desc_string, %></td>
+        <td><%= registration.location_desc_string %></td>
         <td><%= registration.name %></td>
         <td><%= registration.phone_number %></td>
         <td><%= registration.photo_url %></td>
