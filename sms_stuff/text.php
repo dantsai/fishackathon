@@ -30,6 +30,7 @@
         $name = "Monkey";
     }
  
+//The Report Flow//
 
     //Logic for getting location information
     if ($_SESSION['location'] == 1 && $_SESSION['action'] == 'report') {
@@ -73,7 +74,6 @@
         </Response>
     <?php }
 
-    //Logic for Report flow
     else if($_REQUEST['Body'] == '1') { 
         
         //need to store date, time, status, phone number, photo to the database
@@ -93,34 +93,7 @@
 
         //create a variable for the regID
         $_SESSION['regID'] = 1;
-        $uri = $_REQUEST['Uri'];
-        
-        // now greet the sender
-        header("content-type: text/xml");
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-        ?>
-        <Response>
-            <Message><?php echo $action . " ur: " . $uri ?>. Please provide the ID number of the boat you are reporting.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
-        </Response>
-    <?php }
-
-    //Logic for Register flow)
-    else if($_REQUEST['Body'] == '2') { 
-        
-
-        //get the action variable if it exists
-        $action = $_SESSION['action'];
-        //if it doesn't, set it as 'report'
-        if(!strlen($action)) {
-            $action = 'register';
-
-            //Save it
-            $_SESSION['action'] = $action;
-        }
-
-        //create a variable for the regID
-        $image = $_REQUEST['regID'] = 1;
+        //$uri = $_REQUEST['Uri'];
         
         // now greet the sender
         header("content-type: text/xml");
@@ -128,6 +101,77 @@
         ?>
         <Response>
             <Message><?php echo $action ?>. Please provide the ID number of the boat you are reporting.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+//Logic for Register flow
+    //input boat type step
+    else if($_SESSION['boatLocation'] == 1 && $_SESSION['action'] == 'register') {
+
+        //set the body to a boat location variable
+        $boatLocation = $_REQUEST['Body'];
+
+        //set boat location into the session cookie
+        $_SESSION['boatLocation'] = $boatLocation;
+
+        //create a flag variable for the boat type
+        $_SESSION['boatType'] = 1;
+
+        // now send the message
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Please reply with the type of boat you are registering. 1 for BoatType A, 2 for BoatType B, 3 for BoatType 3.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+    //input boat location step
+    else if($_SESSION['address'] == 1 && $_SESSION['action'] == 'register') {
+
+        //set the body to an address variable
+        $address = $_REQUEST['Body'];
+
+        //set address into the session cookie
+        $_SESSION['address'] = $address;
+
+        //create a flag variable for the boat location
+        $_SESSION['boatLocation'] = 1;
+
+        // now send the message
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Please reply with the location of your boat.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+    //input address step
+    else if($_REQUEST['Body'] == '2') {    
+
+        //get the action variable if it exists
+        $action = $_SESSION['action'];
+        //if it doesn't, set it as 'register'
+        if(!strlen($action)) {
+            $action = 'register';
+
+            //Save it
+            $_SESSION['action'] = $action;
+        }
+
+        //create a flag variable for the address
+        $_SESSION['address'] = 1;
+        
+        // now greet the sender
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message><?php echo $action ?>. Please reply back with your address.</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
