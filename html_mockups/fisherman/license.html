@@ -18,6 +18,9 @@
 <link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]><script src="http://www.eleventhedition.com/wp-content/themes/airship/js/html5shiv.js"></script><![endif]--> 
 
+<!-- css for adding images to dropdown -->
+<link rel="stylesheet" type="text/css" href="../_css/msdropdown/dd.css" />
+
 <meta name="description" content="Website Design / Designer in Glasgow, Scotland. A Web Design Agency Specialising in Website Design, Website Development, and Wordpress / Magento Themes."/>
 <link rel="canonical" href="http://www.eleventhedition.com/" />
 <meta property="og:locale" content="en_US" />
@@ -58,8 +61,9 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 	<div class="formfield subquestion">	
 		<p class="left2 formdescription">Net Type</p>
 		<select>
-<!-- 			options found at http://fishwise.org/index.php/science/production-method-guide -->
-			<option>Bottom Trawl</option>
+<!-- options found at http://fishwise.org/index.php/science/production-method-guide -->
+<!-- pictures for types found at http://fishwise.org/images/stories/private_pdfs/info_binder_2010.pdf -->
+			<option data-image="../_img/BottomTrawl.png">Bottom Trawl</option>
 			<option>Midwater Trawl</option>
 			<option>Gillnet</option>
 			<option>Purse Seine: FAD</option>
@@ -101,7 +105,6 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 <script src="http://www.eleventhedition.com/wp-content/themes/airship/js/carousel/jquery.flexslider-min.js"></script>
 <script src="http://www.eleventhedition.com/wp-content/themes/airship/js/app.js"></script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
 <script type="text/javascript">
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-11821023-1']);
@@ -112,6 +115,20 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
+</script>
+
+
+<!-- for adding images to the dropdown -->
+<script src="../_js/msdropdown/jquery-1.9.0.min.js"></script>
+<script src="../_js/msdropdown/jquery.dd.min.js"></script>
+<script type="language/javascript">
+	$(document).ready(function(e) {
+	try {
+	$("body select").msDropDown();
+	} catch(e) {
+	alert(e.message);
+	}
+	});
 </script>
 
 </body>
