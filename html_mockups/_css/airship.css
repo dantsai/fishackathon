@@ -153,6 +153,10 @@
   .error { color: #1FB4DD; position: relative; font-size: 0.938em; }
   .thanks { color: #1FB4DD; }
 
+  input[type="file"]{
+    border: none;
+  }
+
   .button,
   button,
   input[type="submit"],
@@ -589,6 +593,10 @@
 }
 .formdescription {
   margin-bottom: 0;
+}
+
+.subquestion{
+  margin-left: 20px;
 }
 
 #header {

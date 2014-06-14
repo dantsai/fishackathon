@@ -1,0 +1,45 @@
+<%= form_for(@license) do |f| %>
+  <% if @license.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@license.errors.count, "error") %> prohibited this license from being saved:</h2>
+
+      <ul>
+      <% @license.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :location_desc %><br>
+    <%= f.text_field :location_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_id %><br>
+    <%= f.text_field :registration_id %>
+  </div>
+  <div class="field">
+    <%= f.label :industry_type %><br>
+    <%= f.text_field :industry_type %>
+  </div>
+  <div class="field">
+    <%= f.label :fish_type %><br>
+    <%= f.text_field :fish_type %>
+  </div>
+  <div class="field">
+    <%= f.label :date_issued %><br>
+    <%= f.text_field :date_issued %>
+  </div>
+  <div class="field">
+    <%= f.label :date_expires %><br>
+    <%= f.datetime_select :date_expires %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: licenses
+#
+#  id              :integer          not null, primary key
+#  status          :integer
+#  location_desc   :string(255)
+#  registration_id :integer
+#  industry_type   :integer
+#  fish_type       :integer
+#  date_issued     :datetime
+#  date_expires    :datetime
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 
+  location_desc: MyString
+  registration_id: 
+  industry_type: 
+  fish_type: 
+  date_issued: 
+  date_expires: 2014-06-14 12:15:43
+
+two:
+  status: 
+  location_desc: MyString
+  registration_id: 
+  industry_type: 
+  fish_type: 
+  date_issued: 
+  date_expires: 2014-06-14 12:15:43
