@@ -704,10 +704,16 @@ select {
   margin-bottom:30px;
 }
 
-.regtable th, .regtable td, .regtable tr {
+.regtable th{
   border-top: 1px solid #d3d4d5;
   border-bottom: 1px solid #d3d4d5;
-  padding: 10px;
+  padding: 7px 25px 7px 0;
+  font-weight: bold;
+}
+
+.regtable td {
+  border-bottom: 1px solid #d3d4d5;
+  padding: 7px 25px 7px 0;
 }
 
 .table-title{
