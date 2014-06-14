@@ -699,3 +699,18 @@ select {
         .tab.active {
             display:block;
         }
+
+.regtable{
+  margin-bottom:30px;
+}
+
+.regtable th, .regtable td, .regtable tr {
+  border-top: 1px solid #d3d4d5;
+  border-bottom: 1px solid #d3d4d5;
+  padding: 10px;
+}
+
+.table-title{
+  color:#7FB5DA;
+  font-weight: bold;
+}
