@@ -602,6 +602,10 @@ select {
   margin-left: 20px;
 }
 
+.indeximg {
+  margin-top: 40px;
+}
+
 #header {
     /*border-top: 1px solid #d3d3d3; */
     border-bottom: 1px solid #d3d3d3;
