@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @registration.status %>
+</p>
+
+<p>
+  <strong>Location desc string,:</strong>
+  <%= @registration.location_desc_string, %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @registration.name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @registration.phone_number %>
+</p>
+
+<p>
+  <strong>Photo url:</strong>
+  <%= @registration.photo_url %>
+</p>
+
+<p>
+  <strong>Boat type:</strong>
+  <%= @registration.boat_type %>
+</p>
+
+<p>
+  <strong>Registration number:</strong>
+  <%= @registration.registration_number %>
+</p>
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

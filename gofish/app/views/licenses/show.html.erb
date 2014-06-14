@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @license.status %>
+</p>
+
+<p>
+  <strong>Location desc:</strong>
+  <%= @license.location_desc %>
+</p>
+
+<p>
+  <strong>Registration:</strong>
+  <%= @license.registration_id %>
+</p>
+
+<p>
+  <strong>Industry type:</strong>
+  <%= @license.industry_type %>
+</p>
+
+<p>
+  <strong>Fish type:</strong>
+  <%= @license.fish_type %>
+</p>
+
+<p>
+  <strong>Date issued:</strong>
+  <%= @license.date_issued %>
+</p>
+
+<p>
+  <strong>Date expires:</strong>
+  <%= @license.date_expires %>
+</p>
+
+<%= link_to 'Edit', edit_license_path(@license) %> |
+<%= link_to 'Back', licenses_path %>
