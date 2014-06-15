@@ -1,6 +1,7 @@
 class LicensesController < ApplicationController
   before_action :set_license, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :verify_authenticity_token 
+  
   # GET /licenses
   # GET /licenses.json
   def index
@@ -22,7 +23,6 @@ class LicensesController < ApplicationController
   end
 
   def check_license
-    puts params['regnumber']
     if Registration.exists?('registration_number' => params['regnumber'])
       render json: { "valid" => true} 
     else
@@ -30,10 +30,25 @@ class LicensesController < ApplicationController
     end
   end
 
+  def approve
+    @license = License.find(params['id'])
+    @license.status = 2
+    @license.save
+    redirect_to license_path(@license)
+  end
+
   # POST /licenses
   # POST /licenses.json
   def create
     @license = License.new(license_params)
+    num = params['regnumber']
+    puts num
+    reg = Registration.where('registration_number' => num).first
+    if not reg.nil?
+      @license.registration = reg
+    end
+
+    license_id = license_params['regnumber']
     #todo: link license to boat registration
     #todo: set the license expiration date
     @license.status = 0

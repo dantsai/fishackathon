@@ -1,5 +1,12 @@
 
-          <p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+          
+          <div class="title-wrapper">
+            <p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+            <h3 class="main">Request Details</h3>
+            <div class="status status-<%= @license.status %>">
+               <%= @license.status_text %>
+            </div>
+          </div>
           <table class="detailstable">
             <tr>
               <td class="detailstype">Case ID</td>
@@ -22,8 +29,16 @@
               <td><%= @license.fish_type_text %></td>
             </tr>
             <tr>
+              <td class="detailstype">Net Type</td>
+              <td><%= @license.net_type_text %></td>
+            </tr>
+            <tr>
               <td class="detailstype">Hook/Line</td>
               <td><%= @license.line_text %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Other Gear?</td>
+              <td><%= @license.gear_type_text %></td>
             </tr>
             <tr>
               <td class="detailstype">Requester</td>
@@ -33,12 +48,13 @@
               <td class="detailstype">Phone</td>
               <td><%= @license.fisher_phone %></td>
             </tr>
-            <tr>
-              <td class="detailstype">Location</td>
-              <td id="map-canvas"></td>
-            </tr>
           </table>
-    <form method="post" action="license/approve"><input type="submit" value="Approve License"></form>
+    <form method="post" action="/licenseapprove">
+      <input type="submit" value="Approve License">
+      <input type="hidden" name="id" value="<%= @license.id %>" />
+    </form>
+
+   <br><%= link_to 'Delete Request', @license, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 
   </div>
 

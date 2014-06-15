@@ -1,34 +1,45 @@
-<p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+<div class="title-wrapper">
+  <p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+  <h3 class="main">Report Details</h3>
 
-<p>
-  <strong>Status:</strong>
-  <%= @report.status_text || "" %>
-</p>
-
-<p>
-  <strong>Location Description:</strong>
-  <%= @report.location_desc || "" %>
-</p>
-
-<p>
+  <div class="status status-<%= @report.status %>">
+     <%= @report.status_text %>
+  </div>
+</div>
+<br>
+<table class="detailstable">
+  <tr>
+    <td class="detailstype">Location Description</td>
+    <td><%= @report.location_desc || "" %></td>
+  </tr>
+  
   
   <% if @report.location_lat and @report.location_lng %>
-  <strong>Map</strong>
+  <tr>
+   <td colspan="2">
     <div id="map-canvas"></div>
     <input type="hidden" id="lat" value="<%= @report.location_lat %>" />
     <input type="hidden" id="lng" value="<%= @report.location_lng %>" />
+    </td>
+  </tr>
   <% end %>
-</p>
-<p>
-  <strong>Comments:</strong>
-  <%= @report.comments || "" %>
-</p>
 
-<p>
+  <tr>
+    <td class="detailstype">Comments</td>
+    <td><%= @report.comments || ""  %></td>
+  </tr>
+
+  </table>
+
+
   <% if not @report.photo_url.nil? %>
   	<img src="<%= '/data/' + @report.photo_url %>">
   <% else %>
   	No image available
   <% end %>
-</p>
+
+  <form action="/resolvereport", method="post">
+     <input type="hidden" name="id" value="<%= @report.id %>" />
+     <input type="submit" value="Mark as Resolved">
+  </form>
 

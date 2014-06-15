@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token 
 
   # GET /reports
   # GET /reports.json
@@ -19,6 +20,13 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+  end
+
+  def resolve
+    @report = Report.find(params['id'])
+    @report.status = 2
+    @report.save
+    redirect_to report_path(@report)
   end
 
   def create_from_text

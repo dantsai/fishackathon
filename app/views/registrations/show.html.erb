@@ -1,38 +1,40 @@
-<p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @registration.status_text %>
-</p>
-
-<p>
-  <strong>Location Description:</strong>
-  <%= @registration.location_desc %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @registration.name %>
-</p>
-
-<p>
-  <strong>Phone Number:</strong>
-  <%= @registration.phone_number %>
-</p>
-
-<p>
-  <strong>Boat Length:</strong>
-  <%= @registration.boat_length %> meters
-</p>
-
-<p>
-  <strong>Has Motor:</strong>
-  <%= @registration.has_motor_text %>
-</p>
-<p>
-  <strong>Registration Number:</strong>
-  <%= @registration.registration_number %>
-</p>
+<div class="title-wrapper">
+  <p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+  <h3 class="main">Request Details</h3>
+  <div class="status status-<%= @registration.status %>">
+     <%= @registration.status_text %>
+  </div>
+</div>
+<table class="detailstable">
+  <tr>
+    <td class="detailstype">Name</td>
+    <td><%= @registration.name %></td>
+  </tr>
+  <tr>
+    <td class="detailstype">Phone Number</td>
+    <td><%= @registration.phone_number %></td>
+  </tr>
+  <tr>
+    <td class="detailstype">Status</td>
+    <td><%= @registration.status_text %></td>
+  </tr>
+  <tr>
+    <td class="detailstype">Location Description</td>
+    <td><%= @registration.location_desc %></td>
+  </tr>
+  <tr>
+    <td class="detailstype">Boat Length</td>
+    <td><%= @registration.boat_length %> meters</td>
+  </tr>
+  <tr>
+    <td class="detailstype">Has Engine?</td>
+    <td><%= @registration.has_motor_text %></td>
+  </tr>
+  <tr>
+    <td class="detailstype">Registration Number</td>
+    <td><%= @registration.registration_number %></td>
+  </tr>
+</table>
 
 <form action="/approve", method="post">
   <input type="hidden" name="id" value="<%= @registration.id %>" />

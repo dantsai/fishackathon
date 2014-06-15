@@ -12,6 +12,8 @@ Gofish::Application.routes.draw do
   get 'report/textpost' => 'reports#create_from_text'
 
   post 'approve' => 'registrations#approve'
+  post 'licenseapprove' => 'licenses#approve'
+  post 'resolvereport' => 'reports#resolve'
 
   get 'confirmation' => 'home#confirmation', as: :confirmation
   root 'home#index'

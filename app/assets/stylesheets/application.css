@@ -26,3 +26,21 @@ a {color:#646464}a:hover {color:#1fb4dd}
 input[type='checkbox'],input[type='radio'] { width: 30px; margin-right:5px;}
 input[type='file'] { border: none; font-size:.9em;}
 label.checkbox { position:relative; top:-14px;}
+h3.main {
+	text-align:left;
+}
+
+div.title-wrapper {
+	position:relative;
+	width:400px;
+}
+
+div.status {
+	position:absolute;
+	right:0;
+	top:40px;
+	padding:10px;
+	width:160px;
+	text-align:center;
+	border:1px dotted #232323;
+}

@@ -26,9 +26,19 @@ class License < ActiveRecord::Base
 		Enum.REQUEST_STATUS[index]
 	end
 
+	def gear_type_text
+		index = self.other_gear
+		Enum.OTHER_GEAR_TYPES[index]
+	end
+
 	def fish_type_text
 		index = self.fish_type
 		Enum.FISH_TYPES[index]
+	end
+
+	def net_type_text
+		index = self.net_type
+		Enum.NET_TYPES[index]
 	end
 
 	def regnumber

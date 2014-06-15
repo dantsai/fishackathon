@@ -1,7 +1,7 @@
 class Enum < ActiveRecord::Base
 	
 	def self.FISH_TYPES
-		[ 'small', 'large' ]
+		[ 'Small', 'Large' ]
 	end
 
 	def self.LINE_TYPES
@@ -22,7 +22,7 @@ class Enum < ActiveRecord::Base
   	end
 
   	def self.REPORT_STATUS 
-  		['New', 'Investigating', 'Closed']
+  		['New', 'Investigating', 'Resolved']
   	end
 
 end
