@@ -24,10 +24,7 @@ class ReportsController < ApplicationController
   def create_from_text
     @report = Report.new
     @report.location_desc = params['location']
-    @report.comments = params['comment']
-    if not @params['regID'].nil?
-      @report.comments = params['comment'] + '   BOAT ID: ' + @params['regID']
-    end
+    @report.comments = params['comment'] + ' BOAT ID:' + params['regID']
     @report.save
     render json: {'id' => @report.id }
   end
