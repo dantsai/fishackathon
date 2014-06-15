@@ -11,6 +11,15 @@
 </p>
 
 <p>
+  
+  <% if @report.location_lat and @report.location_lng %>
+  <strong>Map</strong>
+    <div id="map-canvas"></div>
+    <input type="hidden" id="lat" value="<%= @report.location_lat %>" />
+    <input type="hidden" id="lng" value="<%= @report.location_lng %>" />
+  <% end %>
+</p>
+<p>
   <strong>Comments:</strong>
   <%= @report.comments || "" %>
 </p>

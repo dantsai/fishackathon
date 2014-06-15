@@ -18,9 +18,16 @@
 
   <div class="field">
     <p class="left2 formdescription"><%= f.label :location_desc, 'Location Description' %></p>
-    <%= f.text_area :location_desc, :placeholder=>'Where is the boat? Include coordinates and boat number if available.' %>
+    <%= f.text_area :location_desc, :placeholder=>'Where is the boat?', :style=>"margin-bottom:5px" %><br>
+    <button id="lookuploc" type="button">Locate Me</button>
+    <p id="latlong">(0,0)</p>
+
+    <input type="hidden" name="report[location_lat]" id="lat" value="" />
+    <input type="hidden" name="report[location_lng]" id="lng" value="" />
+    <br>
+    <br>
   </div>
-  
+
   <div class="field">
     <p class="left2 formdescription"><%= f.label :comments %></p>
     <%= f.text_area :comments, :placeholder=>'Additional notes' %>

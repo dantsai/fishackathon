@@ -82,6 +82,9 @@ function processGeolocationResult(position) {
     html5Accuracy = position.coords.accuracy;   //Get accuracy in meters
 
     console.log("success " + html5Lat + ", " + html5Lon);
+    $('#lat').val(html5Lat);
+    $('#lng').val(html5Lon);
+
     $('#latlong').text(html5Lat.toString().substr(0,7) + ", " + html5Lon.toString().substr(0,7)).css('display','inline')
 }
 

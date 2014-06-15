@@ -28,5 +28,46 @@
 	});
 </script>
 
+<script>
+
+$(document).ready(function() {
+
+   _map = initializeMap();
+
+  //keep track of the currently open infowindow so we don't open more than once
+  _openWindow = null;
+  
+});
+
+function initializeMap() {
+
+  if (document.getElementById('map-canvas')) {
+      var berkeley = new google.maps.LatLng(37.5218, -122.1618);
+      var mapOptions = {
+          center: berkeley,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  createMarker($('#lat').val(), $('#lng').val(),map);
+  return map;
+  }
+
+}
+
+function createMarker(lat,lon,map) {
+  var location = new google.maps.LatLng(lat, lon);
+
+  var markerOptions = {
+    position: location,
+    map: map
+  };
+
+  var marker = new google.maps.Marker(markerOptions);
+  map.setCenter(location);
+}
+
+</script>
 </body>
 </html>

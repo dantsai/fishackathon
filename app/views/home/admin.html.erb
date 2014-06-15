@@ -3,9 +3,9 @@
     <div class="one-third column section"></div>
     <div class="two-thirds column" id="welcomeheader">
       <p class="welcome">Welcome, Chalenge Masakera! You have
-      <p><a href="#">10 registration requests</a>
-      <p><a href="#">4 license requests</a></p>
-      <p><a href="#">5 reports of illegal fishing</a></p>
+      <p><a href="#"><%= pluralize(@registrations_new.length, 'registration request') %></a>
+      <p><a href="#"><%= pluralize(@licenses_new.length, 'license request') %></a></p>
+      <p><a href="#"><%= pluralize(@reports.length, 'report') %> of illegal fishing</a></p>
     </div>
   </div>
 
