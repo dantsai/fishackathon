@@ -18,6 +18,9 @@
 <link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]><script src="http://www.eleventhedition.com/wp-content/themes/airship/js/html5shiv.js"></script><![endif]--> 
 
+<!-- css for adding images to dropdown -->
+<link rel="stylesheet" type="text/css" href="../_css/msdropdown/dd.css" />
+
 <meta name="description" content="Website Design / Designer in Glasgow, Scotland. A Web Design Agency Specialising in Website Design, Website Development, and Wordpress / Magento Themes."/>
 <link rel="canonical" href="http://www.eleventhedition.com/" />
 <meta property="og:locale" content="en_US" />
@@ -73,8 +76,8 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 		<p class="left2 formdescription">Does the boat have an engine?</p>
 		<select>
 			<option>Select response</option>
-			<option>engine</option>
-			<option>no engine</option>
+			<option data-image="../_img/boat_with_engine.jpg">engine</option>
+			<option data-image="../_img/canoe_with_paddles.jpg">no engine</option>
 		</select>
 	</div>
 
@@ -92,6 +95,19 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 	<input type="submit">
 	</div>
 </div>	<!-- container --> 
+
+<!-- for adding images to the dropdown -->
+<script src="../_js/msdropdown/jquery-1.9.0.min.js"></script>
+<script src="../_js/msdropdown/jquery.dd.min.js"></script>
+<script language="javascript">
+	$(document).ready(function(e) {
+	try {
+	$("body select").msDropDown();
+	} catch(e) {
+	alert(e.message);
+	}
+	});
+</script>
 
 </body>
 </html>
