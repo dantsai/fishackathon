@@ -11,18 +11,19 @@
     </div>
   <% end %>
 
-
-  <div class="field">
-    <p class="left2 formdescription"><%= f.label :location_desc, 'Location Description' %></p>
-    <%= f.text_area :location_desc %>
-  </div>
   <div class="field">
     <p class="left2 formdescription"><%= f.label :photo_url, 'Photo' %></p>
     <%= f.file_field :photo_url %>
   </div>
+
+  <div class="field">
+    <p class="left2 formdescription"><%= f.label :location_desc, 'Location Description' %></p>
+    <%= f.text_area :location_desc, :placeholder=>'Where is the boat? Include coordinates and boat number if available.' %>
+  </div>
+  
   <div class="field">
     <p class="left2 formdescription"><%= f.label :comments %></p>
-    <%= f.text_area :comments %>
+    <%= f.text_area :comments, :placeholder=>'Additional notes' %>
   </div>
   <div class="actions">
     <%= f.submit 'Submit Report' %>

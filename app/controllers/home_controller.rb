@@ -3,8 +3,11 @@ class HomeController < ApplicationController
   end
 
   def admin
-    @licenses = License.where('status = 0').take(10)
-    @registrations = Registration.where('status = 0').take(10)
+    @licenses_new = License.where('status != 2')
+    @licenses_approved = License.where('status = 2')
+    @registrations_new = Registration.where('status != 2')
+    @registrations_approved = Registration.where('status = 2')
+    @reports = Report.all
   end
 
   def confirmation

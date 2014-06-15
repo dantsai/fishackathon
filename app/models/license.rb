@@ -30,4 +30,33 @@ class License < ActiveRecord::Base
 		index = self.fish_type
 		Enum.FISH_TYPES[index]
 	end
+
+	def regnumber
+		if self.registration.nil?
+			'None'
+		else
+			self.registration.registration_number
+		end
+	end
+
+	def line_text
+		index = self.hook_line_type
+		Enum.LINE_TYPES[index]
+	end
+
+	def fisher_name
+		if self.registration.nil?
+			'Unknown'
+		else
+			self.registration.name
+		end
+	end
+
+	def fisher_phone
+		if self.registration.nil?
+			 'Unknown'
+		else
+			self.registration.phone_number
+		end
+	end
 end

@@ -11,6 +11,8 @@ Gofish::Application.routes.draw do
   post 'registrations/textpost' => 'registrations#createfromtext'
   post 'reports/textpost' => 'reports#createfromtext'
 
+  post 'approve' => 'registrations#approve'
+
   get 'confirmation' => 'home#confirmation', as: :confirmation
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,59 +1,164 @@
-<h1>Pending Registrations</h1> <%= link_to 'View All', registrations_path %>
 
-<table class="datatable">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone number</th>
-      <th>Location</th>
-      <th>Photo</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @registrations.each do |registration| %>
-      <tr>
-        <td><%= registration.name %></td>
-        <td><%= registration.phone_number %></td>
-        <td><%= registration.location_desc %></td> 
-        <td><%= registration.photo_url %></td>
-        <td><%= link_to 'View', registration %></td>
-        <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-        <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+    <div class="one-third column section"></div>
+    <div class="two-thirds column" id="welcomeheader">
+      <p class="welcome">Welcome, Chalenge Masakera! You have
+      <p><a href="#">10 registration requests</a>
+      <p><a href="#">4 license requests</a></p>
+      <p><a href="#">5 reports of illegal fishing</a></p>
+    </div>
+  </div>
 
 
-<h1>Pending Licenses</h1> <%= link_to 'View All', licenses_path %>
+  <div class="tabs">
+      <ul class="tab-links">
+          <li class="active"><a href="#tab1">Registrations</a></li>
+          <li><a href="#tab2">Licenses</a></li>
+          <li><a href="#tab3">Reports</a></li>
+      </ul>
+   
+      <div class="tab-content">
+          <div id="tab1" class="tab active">
+              <p class="table-title">New Requests</p>
+              <table class="regtable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Case ID</th>
+                    <th>Date Requested</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @registrations_new.each do |registration| %>
+                      <tr>
+                        <td><%= registration.status_text %></td>
+                        <td><%= registration.id %></td>
+                        <td><%= registration.created_at %></td> 
+                        <td><%= registration.name %></td>
+                        <td><%= registration.location_desc %></td>
+                        <td><%= link_to 'View', registration %></td>
+                      </tr>
+                    <% end %>
+                </tbody>
+              </table>
+              </br>
 
-<table class="datatable">
-  <thead>
-    <tr>
-
-      <th>Date of request</th>
-      <th>Location</th>
-      <th>Fish type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @licenses.each do |license| %>
-      <tr>
-      	<td><%= license.created_at %></td>
-        <td><%= license.location_desc %></td>
-        <td><%= license.fish_type %></td>
-        <td><%= link_to 'View', license %></td>
-        <td><%= link_to 'Edit', edit_license_path(license) %></td>
-        <td><%= link_to 'Destroy', license, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <p class="table-title">Approved Requests</p>
+              <table class="regtable">
+                <thead>
+                  <tr>
+                    <th>Registration Number</th>
+                    <th>Case ID</th>
+                    <th>Date Requested</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @registrations_approved.each do |registration| %>
+                      <tr>
+                        <td><%= registration.registration_number %></td>
+                        <td><%= registration.id %></td>
+                        <td><%= registration.created_at %></td> 
+                        <td><%= registration.name %></td>
+                        <td><%= registration.location_desc %></td>
+                        <td><%= link_to 'View', registration %></td>
+                      </tr>
+                    <% end %>
+                </tbody>
+              </table>
+          </div>
+   
+          <div id="tab2" class="tab">
+              <p class="table-title">New Requests</p>
+              <table class="regtable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Case ID</th>
+                    <th>Date Requested</th>
+                    <th>Fish Type</th>
+                    <th>Location</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @licenses_new.each do |license| %>
+                      <tr>
+                        <td><%= license.status_text %></td>
+                        <td><%= license.id %></td>
+                        <td><%= license.created_at %></td> 
+                        <td><%= license.fish_type_text %></td>
+                        <td><%= license.location_desc %></td>
+                        <td><%= link_to 'View', license %></td>
+                      </tr>
+                    <% end %>
+                </tbody>
+              </table>
+              </br>
+              <p class="table-title">Approved Requests</p>
+              <table class="regtable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Case ID</th>
+                    <th>Date Requested</th>
+                    <th>Fish Type</th>
+                    <th>Location</th>
+                    <th>Fish Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @licenses_approved.each do |license| %>
+                      <tr>
+                        <td><%= license.status_text %></td>
+                        <td><%= license.id %></td>
+                        <td><%= license.created_at %></td> 
+                        <td><%= license.fish_type_text %></td>
+                        <td><%= license.location_desc %></td>
+                        <td><%= link_to 'View', license %></td>
+                      </tr>
+                    <% end %>
+                </tbody>
+              </table>
+          </div>
+   
+          <div id="tab3" class="tab">
+              <p class="table-title">Reports</p>
+              <table class="regtable">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Location</th>
+                  <th>Comments</th>
+                  <th>Thumbnail</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reports.each do |report| %>
+                      <tr>
+                        <td><%= report.status_text %></td>
+                        <td><%= report.created_at %></td>
+                        <td><%= report.location_desc %></td> 
+                        <td><%= report.comments %></td>
+                        <td style="vertical-align:middle">
+                        <img src="<%= '/data/' + report.photo_url %>" style="height:60px" >
+                        </td>
+                        <td><%= link_to 'View', report %></td>
+                      </tr>
+                    <% end %>
+              </tbody>
+              </table>
+          </div>
+      </div>
+  </div>

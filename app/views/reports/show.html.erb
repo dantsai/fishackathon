@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
 
 <p>
   <strong>Status:</strong>
@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <strong>Location desc:</strong>
+  <strong>Location Description:</strong>
   <%= @report.location_desc %>
 </p>
 
@@ -19,4 +19,3 @@
   <img src="<%= '/data/' + @report.photo_url %>">
 </p>
 
-<%= link_to 'Back', admin_path %>

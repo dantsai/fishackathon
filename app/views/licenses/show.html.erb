@@ -1,34 +1,46 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @license.status_text %>
-</p>
+          <p class="table-title"><a href="/admin">&lt; Back to Admin</a></p>
+          <table class="detailstable">
+            <tr>
+              <td class="detailstype">Case ID</td>
+              <td><%= @license.id %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Registration ID</td>
+              <td><%= @license.regnumber %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Date of request</td>
+              <td><%= @license.created_at %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Status</td>
+              <td><%= @license.status_text %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Fish Type</td>
+              <td><%= @license.fish_type_text %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Hook/Line</td>
+              <td><%= @license.line_text %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Requester</td>
+              <td><%= @license.fisher_name %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Phone</td>
+              <td><%= @license.fisher_phone %></td>
+            </tr>
+            <tr>
+              <td class="detailstype">Location</td>
+              <td id="map-canvas"></td>
+            </tr>
+          </table>
+    <form><input type="submit" value="Approve"></form>
 
-<p>
-  <strong>Location desc:</strong>
-  <%= @license.location_desc %>
-</p>
+  </div>
 
-<p>
-  <strong>Registration:</strong>
-  <%= @license.registration_id %>
-</p>
+                        
 
-
-<p>
-  <strong>Fish type:</strong>
-  <%= @license.fish_type_text %>
-</p>
-
-<p>
-  <strong>Date issued:</strong>
-  <%= @license.date_issued %>
-</p>
-
-<p>
-  <strong>Date expires:</strong>
-  <%= @license.date_expires %>
-</p>
-
-<%= link_to 'Back', admin_path %>

@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy, :approve]
-
+  skip_before_filter :verify_authenticity_token  
   # GET /registrations
   # GET /registrations.json
   def index
@@ -25,23 +25,23 @@ class RegistrationsController < ApplicationController
   	puts 'Incoming message for new registration'
   end
 
-  def change_status(is_approved)
-    if is_approved
-      regstr = ''
-      found = false
-      while not found 
-        regstr = Registration.generate_reg_number
-        if not Registration.exists?(:registration_number => regstr)
-          found = true
-        end
-      end  
-      @registration.registration_number = regstr
-      @registration.status = 2
-    else
-      @registration.status = 1
-    end
+  def approve
+    @registration = Registration.find(params['id'])
+    regstr = ''
+    found = false
+    while not found 
+      regstr = Registration.generate_reg_number
+      if not Registration.exists?(:registration_number => regstr)
+        found = true
+      end
+    end  
+    @registration.registration_number = regstr
+    @registration.status = 2
     @registration.save
+    redirect_to registration_path(@registration)
   end
+
+
 
   # POST /registrations
   # POST /registrations.json
