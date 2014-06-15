@@ -8,8 +8,8 @@ Gofish::Application.routes.draw do
   get 'admin' => 'home#admin', as: :admin
   get 'checkreg' => 'licenses#check_license'
 
-  match 'registrations/textpost' => 'registrations#createfromtext'
-  match 'reports/textpost' => 'reports#createfromtext'
+  get 'registrations/textpost' => 'registrations#createfromtext'
+  get 'reports/textpost' => 'reports#createfromtext'
 
   post 'approve' => 'registrations#approve'
 
