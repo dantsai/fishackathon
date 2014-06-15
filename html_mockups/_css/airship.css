@@ -203,7 +203,7 @@
     background: #14a8d1; }
 
 select {
-  width: 240px;
+  width: 270px;
 }
 
 /* Menu
@@ -721,6 +721,10 @@ select {
   font-weight: bold;
 }
 
+.picselect{
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
 .detailstable{
   margin-bottom:30px;
   border-collapse:collapse;
