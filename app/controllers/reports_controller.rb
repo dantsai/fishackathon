@@ -26,6 +26,7 @@ class ReportsController < ApplicationController
     @report.location_desc = params['location']
     @report.comments = params['comment'] + '\n' + params['regID']
     @report.save
+    render json: {'id' => @report.id }
   end
 
   # POST /reports

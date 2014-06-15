@@ -22,14 +22,16 @@ class RegistrationsController < ApplicationController
   end
 
   def create_from_text
-  	name
+  	
+    '''name
     address
     boatLocation
     boatLength
     boatName
     phoneNumber
     regID
-    
+    '''
+
   end
 
   def approve
