@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.dd.min
 //= require jquery.dataTables
 //= require turbolinks
 //= require_tree .
@@ -19,4 +20,17 @@
 
 $(document).ready(function() {
     $('.datatable').dataTable();
+
+     $('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = $(this).attr('href');
+ 
+        // Show/Hide Tabs
+        $('.tabs ' + currentAttrValue).show().siblings().hide();
+		// $('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
+        // Change/remove current tab to active
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+ 
+        e.preventDefault();
+    });
 } );

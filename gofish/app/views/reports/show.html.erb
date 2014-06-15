@@ -2,7 +2,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @report.status %>
+  <%= @report.status_text %>
 </p>
 
 <p>
@@ -11,14 +11,12 @@
 </p>
 
 <p>
-  <strong>Phone number:</strong>
-  <%= @report.phone_number %>
+  <strong>Comments:</strong>
+  <%= @report.comments %>
 </p>
 
 <p>
-  <strong>Photo url:</strong>
-  <%= @report.photo_url %>
+  <img src="<%= '/data/' + @report.photo_url %>">
 </p>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<%= link_to 'Back', admin_path %>

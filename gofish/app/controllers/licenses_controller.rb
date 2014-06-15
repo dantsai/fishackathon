@@ -25,6 +25,9 @@ class LicensesController < ApplicationController
   # POST /licenses.json
   def create
     @license = License.new(license_params)
+    #todo: link license to boat registration
+    #todo: set the license expiration date
+    @license.status = 0
 
     respond_to do |format|
       if @license.save
@@ -69,6 +72,8 @@ class LicensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def license_params
-      params.require(:license).permit(:status, :location_desc, :registration_id, :industry_type, :fish_type, :date_issued, :date_expires)
+      params.require(:license).permit(:status, :location_desc, 
+      	:fish_type, :date_issued, :net_type,
+      	:hook_line_type, :other_gear, :date_expires)
     end
 end

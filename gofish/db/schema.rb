@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614193542) do
+ActiveRecord::Schema.define(version: 20140615013954) do
 
   create_table "licenses", force: true do |t|
     t.integer  "status"
     t.string   "location_desc"
     t.integer  "registration_id"
-    t.integer  "industry_type"
     t.integer  "fish_type"
     t.datetime "date_issued"
     t.datetime "date_expires"
@@ -25,31 +24,37 @@ ActiveRecord::Schema.define(version: 20140614193542) do
     t.datetime "updated_at"
     t.decimal  "location_lat"
     t.decimal  "location_lng"
+    t.integer  "net_type"
+    t.integer  "hook_line_type"
+    t.integer  "other_gear"
   end
 
   create_table "registrations", force: true do |t|
     t.integer  "status"
-    t.string   "location_desc_string"
+    t.string   "location_desc"
     t.string   "name"
     t.string   "phone_number"
     t.string   "photo_url"
-    t.integer  "boat_type"
     t.string   "registration_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "location_lat"
     t.decimal  "location_lng"
+    t.integer  "boat_length"
+    t.boolean  "has_motor"
+    t.string   "address"
+    t.string   "boat_name"
   end
 
   create_table "reports", force: true do |t|
     t.integer  "status"
     t.string   "location_desc"
-    t.string   "phone_number"
     t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "location_lat"
     t.decimal  "location_lng"
+    t.string   "comments"
   end
 
 end

@@ -21,10 +21,18 @@ class ReportsController < ApplicationController
   def edit
   end
 
+  def create_from_text
+  	puts 'Incoming message for new registration'
+  end
+
   # POST /reports
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    uploaded_report_path = Report.save_file(report_params[:photo_url])
+    @report.photo_url = uploaded_report_path
+
+    #todo: set report status
 
     respond_to do |format|
       if @report.save
@@ -69,6 +77,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:status, :location_desc, :phone_number, :photo_url)
+      params.require(:report).permit(:status, :location_desc, :phone_number, 
+      	:photo_url, :location_lat, :location_lng, :comments)
     end
 end

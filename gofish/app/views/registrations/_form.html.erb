@@ -12,24 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <p class="left2 formdescription"><%= f.label :name %></p>
     <%= f.text_field :name %>
   </div>
   
   <div class="field">
-    <%= f.label :phone_number, 'Phone Number' %><br>
+    <p class="left2 formdescription"><%= f.label :address, 'Address' %></p>
+    <%= f.text_area :address, :rows => 8 %>
+  </div>
+
+  <div class="field">
+    <p class="left2 formdescription"><%= f.label :phone_number, 'Phone Number' %></p>
     <%= f.text_field :phone_number %>
   </div>
 
   <div class="field">
-    <%= f.label :location_desc_string, 'Location Description' %><br>
-    <%= text_area_tag(:location_desc_string) %>
+    <p class="left2 formdescription"><%= f.label :location_desc, 'Boat Location' %></p>
+    <%= f.text_area :location_desc, :rows => 8 %>
   </div>
 
-   <div class="formfield"> 
-    <p class="left2 formdescription">Fish Type</p>
-    <%= f.select :boat_type, Registration::BOAT_TYPES %>
+  <div class="field">
+    <p class="left2 formdescription"><%= f.label :boat_name, 'Boat Name' %></p>
+    <%= f.text_field :boat_name %>
   </div>
+
+
+  <div class="field">
+    <p class="left2 formdescription"><%= f.label :boat_length, 'Boat Length' %></p>
+    <%= f.number_field :boat_length, :min => 1 %> meters
+  </div>
+
+  <div class="field">
+     <%= f.check_box :has_motor, {}, true, false %><%= f.label "Boat has motor", :class => 'checkbox' %> <br />
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
