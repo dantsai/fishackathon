@@ -739,3 +739,8 @@ select {
   color: #999;
   display: none;
 }
+
+#map-canvas {
+  width: 300px;
+  height: 300px;
+}
