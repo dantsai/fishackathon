@@ -40,9 +40,11 @@
         $_SESSION['name'] = 0;
         $_SESSION['address'] = 0;
         $_SESSION['boatLocation'] = 0;
-        $_SESSION['boatType'] = 0;
+        $_SESSION['boatLength'] = 0;
         $_SESSION['boatName'] = 0;
         $_SESSION['location'] = 0;
+        $_SESSION['boatEngine'] = 0;
+
 
         // now greet the sender
         header("content-type: text/xml");
@@ -151,7 +153,7 @@
         </Response>
     <?php }
 
-    else if($_REQUEST['Body'] == '1' && $_SESSION['boatType'] == 0) { 
+    else if($_REQUEST['Body'] == '1' && $_SESSION['boatLength'] == 0) { 
         
         //need to store date, time, status, phone number, photo to the database
         // HOW TO STORE AN PHOTO THAT'S SENT FROM FISHERMAN?!
@@ -194,17 +196,17 @@
         $name = $_SESSION['name'];
         $address = $_SESSION['address'];
         $boatLocation = $_SESSION['boatLocation'];
-        $boatType = $_SESSION['boatType'];
+        $boatLength = $_SESSION['boatLength'];
         $boatName = $_SESSION['boatName'];
-        $phoneNumber = $_REQUEST['From'];     
+        $phoneNumber = $_REQUEST['From'];   
+        $boatEngine = $_SESSION['boatEngine'];  
         
-
         //generate a registration ID
         $regID = 123456;
 
     //Post collected information to a url query string
 /*        $url = 'http://server.com/path';
-        $data = array('name' => $name, 'address' => $address, 'boatLocation' => $boatLocation, 'boatType' => $boatType, 'boatName' => $boatName, 'phoneNumber' => $phoneNumber, 'regID' => $regID);
+        $data = array('name' => $name, 'address' => $address, 'boatLocation' => $boatLocation, 'boatLength' => $boatLength, 'boatName' => $boatName, 'phoneNumber' => $phoneNumber, 'regID' => $regID);
 
         // use key 'http' even if you send the request to https://...
         $options = array(
@@ -226,7 +228,7 @@
         <Response>
             <Message>
                 <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it.
-                <?php echo "\nName: " . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
+                <?php echo "\nName: " . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Length: " . $boatLength . "\nHas Engine? " . $boatEngine . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
                 <!--<Media>https://demo.twilio.com/owl.png</Media>-->
             </Message>
         </Response>
@@ -238,33 +240,21 @@
     $_SESSION['name'] = 0;
     $_SESSION['address'] = 0;
     $_SESSION['boatLocation'] = 0;
-    $_SESSION['boatType'] = 0;
+    $_SESSION['boatLength'] = 0;
     $_SESSION['boatName'] = 0;
     $_SESSION['location'] = 0;
+    $_SESSION['boatEngine'] = 0;
 
     }
 
-    //prompt boat name, capture boat type
-    else if($_SESSION['boatType'] == 1 && $_SESSION['action'] == 'register') {
+    //prompt boat name, capture boat engine question
+    else if($_SESSION['boatEngine'] == 1 && $_SESSION['action'] == 'register') {
 
-        //set the body to a boat type variable
-        $boatType = $_REQUEST['Body'];
+        //set the body to a boat engine variable
+        $boatEngine = $_REQUEST['Body'];
 
-        //adding the boat type to the session cookie. Need to replace Boat Type A with the actual boat types
-        if($boatType == 1){
-            //set boat type into the session cookie
-            $_SESSION['boatType'] = 'Boat Type A';    
-        }
-        else if($boatType == 2){
-            //set boat type into session cookie
-            $_SESSION['boatType'] = 'Boat Type B';    
-        }
-        else if($boatType == 3){
-            //set boat type into session cookie
-            $_SESSION['boatType'] = 'Boat Type C';    
-        }
-
-        //NOTE: don't have anything to respond to an incorrect response!        
+        //set boat engine into the session cookie
+        $_SESSION['boatEngine'] = $boatEngine;
         
         //create a flag variable for the boat name
         $_SESSION['boatName'] = 1;
@@ -278,7 +268,28 @@
         </Response>
     <?php }
 
-    //prompt boat type step, capture boat location
+    //prompt engine question, capture boat length
+    else if($_SESSION['boatLength'] == 1 && $_SESSION['action'] == 'register') {
+
+        //set the body to a boat length variable
+        $boatLength = $_REQUEST['Body'];
+
+        //set boat length into the session cookie
+        $_SESSION['boatLength'] = $boatLength;
+
+        //create a flag variable for the boat type
+        $_SESSION['boatEngine'] = 1;
+
+        // now send the message
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Does your boat have an engine? (Yes or No)</Message>
+        </Response>
+    <?php }
+
+    //prompt boat length, capture boat location
     else if($_SESSION['boatLocation'] == 1 && $_SESSION['action'] == 'register') {
 
         //set the body to a boat location variable
@@ -288,17 +299,14 @@
         $_SESSION['boatLocation'] = $boatLocation;
 
         //create a flag variable for the boat type
-        $_SESSION['boatType'] = 1;
+        $_SESSION['boatLength'] = 1;
 
         // now send the message
         header("content-type: text/xml");
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message>Please reply with the type of boat you are registering.
-            1 for BoatType A
-            2 for BoatType B
-            3 for BoatType C</Message>
+            <Message>How long is your boat? (in meters)</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
@@ -349,15 +357,10 @@
     //prompt for name step, and capture action
     else if($_REQUEST['Body'] == '2') {    
 
-        //get the action variable if it exists
-        $action = $_SESSION['action'];
-        //if it doesn't, set it as 'register'
-        if(!strlen($action)) {
-            $action = 'register';
+        $action = 'register';
 
-            //Save it
-            $_SESSION['action'] = $action;
-        }
+        //Save it to cookie
+        $_SESSION['action'] = $action;
 
         //create a flag variable for the name
         $_SESSION['name'] = 1;
@@ -368,7 +371,6 @@
         ?>
         <Response>
             <Message>Please reply back with your name.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
@@ -378,9 +380,7 @@
     header("content-type: text/xml, image/png");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
-<Response>
-    <!--<Message><?php echo $name ?>, thanks for the message!</Message>-->
-    
+<Response>    
     <Message><Body>What do you want to do?
     1 for Report
     2 for Register</Body>    
