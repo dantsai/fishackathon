@@ -24,7 +24,7 @@ class ReportsController < ApplicationController
   def create_from_text
     @report = Report.new
     @report.location_desc = params['location']
-    @report.comments = params['comment'] + '\n' + params['regID'])
+    @report.comments = params['comment'] + '\n' + params['regID']
     @report.save
   end
 
