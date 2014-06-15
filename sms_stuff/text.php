@@ -133,7 +133,7 @@
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message><?php echo $action ?>. Please provide the ID number of the boat you are reporting.</Message>
+            <Message>Please provide the ID number of the boat you are reporting.</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
@@ -163,9 +163,11 @@
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it to look like this.
-            <MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>
-            <?php echo "\nName:" . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Message>
+            <Message>
+                <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it to look like this.
+                <?php echo "\nName:" . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
+                <Media>https://demo.twilio.com/owl.png</Media>
+            </Message>
         </Response>
 
 
@@ -234,9 +236,9 @@
         ?>
         <Response>
             <Message>Please reply with the type of boat you are registering.
-            '1' for BoatType A
-            '2' for BoatType B
-            '3' for BoatType C</Message>
+            1 for BoatType A
+            2 for BoatType B
+            3 for BoatType C</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
@@ -320,9 +322,9 @@
     <!--<Message><?php echo $name ?>, thanks for the message!</Message>-->
     
     <Message>What do you want to do? Reply 
-    '1' for Report
-    '2' for Register
-    '3' for License.</Message>
+    1 for Report
+    2 for Register
+    </Message>
     <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
 </Response>
 
