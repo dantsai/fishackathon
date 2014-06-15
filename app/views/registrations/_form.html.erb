@@ -13,41 +13,48 @@
 
   <div class="field">
     <p class="left2 formdescription"><%= f.label :name %></p>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder=>"First and last name" %>
   </div>
   
   <div class="field">
     <p class="left2 formdescription"><%= f.label :address, 'Address' %></p>
-    <%= f.text_area :address, :rows => 8 %>
+    <%= f.text_area :address, :rows => 8, :placeholder=>"Home address" %>
   </div>
 
   <div class="field">
     <p class="left2 formdescription"><%= f.label :phone_number, 'Phone Number' %></p>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, :placeholder=>"Mobile number" %>
   </div>
 
   <div class="field">
     <p class="left2 formdescription"><%= f.label :location_desc, 'Boat Location' %></p>
-    <%= f.text_area :location_desc, :rows => 8 %>
+    <%= f.text_area :location_desc, :rows => 8, :placeholder=>"Where is the boat docked?" %>
   </div>
 
   <div class="field">
     <p class="left2 formdescription"><%= f.label :boat_name, 'Boat Name' %></p>
-    <%= f.text_field :boat_name %>
-  </div>
-
-
-  <div class="field">
-    <p class="left2 formdescription"><%= f.label :boat_length, 'Boat Length' %></p>
-    <%= f.number_field :boat_length, :min => 1 %> meters
+    <%= f.text_field :boat_name, :placeholder=>"Boat name" %>
   </div>
 
   <div class="field">
-     <%= f.check_box :has_motor, {}, true, false %><%= f.label "Boat has motor", :class => 'checkbox' %> <br />
+    <p class="left2 formdescription">
+      <%= f.label :has_motor, "Does the boat have an engine?" %></p>
+     <select value="registration[has_motor]">
+      <option>Select response</option>
+      <option data-image="<%= image_path('boat_with_engine.jpg') %>" value="true">engine</option>
+      <option data-image="<%= image_path('canoe_with_paddles.jpg') %>" value="false">no engine</option>
+    </select>
+  </div><br>
+
+  <div class="field">
+    <p class="left2 formdescription"><%= f.label :boat_length, 'Boat Length (in Meters)' %></p>
+    <%= f.number_field :boat_length, :min => 1, :placeholder=> "Boat length" %>
   </div>
+
+  
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Register' %>
   </div>
 <% end %>

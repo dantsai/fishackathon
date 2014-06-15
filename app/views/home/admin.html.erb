@@ -6,7 +6,6 @@
       <th>Name</th>
       <th>Phone number</th>
       <th>Location</th>
-      <th>Boat type</th>
       <th>Photo</th>
       <th></th>
       <th></th>
@@ -19,8 +18,7 @@
       <tr>
         <td><%= registration.name %></td>
         <td><%= registration.phone_number %></td>
-        <td><%= registration.location_desc_string %></td> 
-        <td><%= registration.boat_type %></td>
+        <td><%= registration.location_desc %></td> 
         <td><%= registration.photo_url %></td>
         <td><%= link_to 'View', registration %></td>
         <td><%= link_to 'Edit', edit_registration_path(registration) %></td>

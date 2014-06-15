@@ -1,7 +1,7 @@
 class Enum < ActiveRecord::Base
 	
 	def self.FISH_TYPES
-		[ 'Coastal Demersal Species', 'Small Pollagic Species', 'Large Pollagic Species', 'Other' ]
+		[ 'small', 'large' ]
 	end
 
 	def self.LINE_TYPES
@@ -18,7 +18,7 @@ class Enum < ActiveRecord::Base
 	end
 
   	def self.REQUEST_STATUS 
-  		['New', 'Waiting for Payment', 'Incomplete', 'Approved']
+  		['Waiting for Payment', 'Incomplete', 'Approved']
   	end
 
   	def self.REPORT_STATUS 

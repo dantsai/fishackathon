@@ -6,9 +6,12 @@ Gofish::Application.routes.draw do
   resources :reports
 
   get 'admin' => 'home#admin', as: :admin
+  get 'checkreg' => 'licenses#check_license'
 
   post 'registrations/textpost' => 'registrations#createfromtext'
   post 'reports/textpost' => 'reports#createfromtext'
+
+  get 'confirmation' => 'home#confirmation', as: :confirmation
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

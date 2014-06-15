@@ -16,12 +16,14 @@
   <form>
   <div class="formfield">
     <p class="left2 formdescription">Registration Number</p>
-    <input type="text" name="regnumber" id="regnumber">
+    <input type="text" name="regnumber" id="regnumber" placeholder='Type the boat registration number'>
+    <%= image_tag'check.png', :id=> 'validmark', :style=>'display:none' %>
+    <%= image_tag 'xicon.png', :id=> 'invalidmark', :style=>'display:none' %>
   </div>
 
   <div class="formfield"> 
     <p class="left2 formdescription">Fishing Location</p>
-    <%= f.text_area :location_desc, :rows => 8 %>
+    <%= f.text_area :location_desc, :rows => 8, :placeholder => 'Describe where you will be fishing using this license' %>
   </div>
 
   <p> Gear Used</p>
@@ -74,7 +76,7 @@
 
 
   <div class="formfield"> 
-    <%= f.submit %>
+    <%= f.submit "Request License" %>
   </div>
 
 <% end %>

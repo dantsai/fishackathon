@@ -21,6 +21,14 @@ class LicensesController < ApplicationController
   def edit
   end
 
+  def check_license
+    if Registration.exists?(:registration_number => params['regnumber'])
+      render json: { "valid" => true} 
+    else
+      render json: { "valid" => false} 
+    end
+  end
+
   # POST /licenses
   # POST /licenses.json
   def create
@@ -31,7 +39,7 @@ class LicensesController < ApplicationController
 
     respond_to do |format|
       if @license.save
-        format.html { redirect_to @license, notice: 'License was successfully created.' }
+        format.html { redirect_to confirmation_path(type: 'license') }
         format.json { render action: 'show', status: :created, location: @license }
       else
         format.html { render action: 'new' }

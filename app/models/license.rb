@@ -25,4 +25,9 @@ class License < ActiveRecord::Base
 		index = self.status || 0
 		Enum.REQUEST_STATUS[index]
 	end
+
+	def fish_type_text
+		index = self.fish_type
+		Enum.FISH_TYPES[index]
+	end
 end

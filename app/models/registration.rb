@@ -25,4 +25,19 @@ class Registration < ActiveRecord::Base
 		index = self.status || 0
 		Enum.REQUEST_STATUS[index]
 	end
+
+	def self.generate_reg_number
+		o = [('A'..'Z'), (0..9)].map { |i| i.to_a }.flatten
+		str = (0...8).map { o[rand(o.length)] }.join
+	end
+
+	def has_motor_text
+		if self.has_motor.nil?
+			'Unknown'
+		elsif self.has_motor
+			'Yes'
+		else
+			'No'
+		end
+	end
 end

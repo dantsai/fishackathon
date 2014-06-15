@@ -38,6 +38,20 @@ $(document).ready(function() {
         setHTML5Location();
     });
 
+    $('#regnumber').blur(function(){
+        $.getJSON('/checkreg?regnumber=' + $(this).val(), function(data) {
+            if (data.valid == 'false') {
+                console.log('is false')
+                $('#validmark').show();
+                $('#invalidmark').hide();
+            } else {
+                console.log('is not false')
+                $('#validmark').hide();
+                $('#invalidmark').show();
+            }
+        });
+    });
+
 });
 
 
