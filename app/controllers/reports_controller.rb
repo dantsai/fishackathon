@@ -22,7 +22,8 @@ class ReportsController < ApplicationController
   end
 
   def create_from_text
-  	puts 'Incoming message for new registration'
+    @report = Report.new(:location_desc => params['location'], :comments => params['comment'])
+    @report.save
   end
 
   # POST /reports

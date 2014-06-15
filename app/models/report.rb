@@ -10,6 +10,7 @@
 #  updated_at    :datetime
 #  location_lat  :decimal(, )
 #  location_lng  :decimal(, )
+#  comments      :string(255)
 #
 
 class Report < ActiveRecord::Base

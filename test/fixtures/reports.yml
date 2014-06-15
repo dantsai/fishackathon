@@ -5,12 +5,12 @@
 #  id            :integer          not null, primary key
 #  status        :integer
 #  location_desc :string(255)
-#  phone_number  :string(255)
 #  photo_url     :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
 #  location_lat  :decimal(, )
 #  location_lng  :decimal(, )
+#  comments      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

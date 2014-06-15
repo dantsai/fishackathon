@@ -22,7 +22,14 @@ class RegistrationsController < ApplicationController
   end
 
   def create_from_text
-  	puts 'Incoming message for new registration'
+  	name
+    address
+    boatLocation
+    boatLength
+    boatName
+    phoneNumber
+    regID
+    
   end
 
   def approve

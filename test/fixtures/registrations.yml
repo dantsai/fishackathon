@@ -8,7 +8,6 @@
 #  name                :string(255)
 #  phone_number        :string(255)
 #  photo_url           :string(255)
-#  boat_type           :integer
 #  registration_number :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
@@ -16,6 +15,8 @@
 #  location_lng        :decimal(, )
 #  boat_length         :integer
 #  has_motor           :boolean
+#  address             :string(255)
+#  boat_name           :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
