@@ -720,3 +720,8 @@ select {
   color:#7FB5DA;
   font-weight: bold;
 }
+
+#latlong {
+  color: #999;
+  display: none;
+}
