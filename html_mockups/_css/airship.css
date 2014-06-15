@@ -721,6 +721,20 @@ select {
   font-weight: bold;
 }
 
+.detailstable{
+  margin-bottom:30px;
+  border-collapse:collapse;
+}
+
+.detailstable td {
+  padding: 7px 25px 7px 0;
+  vertical-align: top;
+}
+
+.detailstype {
+  font-weight: bold;
+}
+
 #latlong {
   color: #999;
   display: none;
