@@ -16,6 +16,10 @@
 </p>
 
 <p>
-  <img src="<%= '/data/' + @report.photo_url %>">
+  <% if not @report.photo_url.nil? %>
+  	<img src="<%= '/data/' + @report.photo_url %>">
+  <% else %>
+  	No image available
+  <% end %>
 </p>
 
