@@ -149,10 +149,14 @@
                       <tr>
                         <td><%= report.status_text %></td>
                         <td><%= report.created_at %></td>
-                        <td><%= report.location_desc %></td> 
-                        <td><%= report.comments %></td>
+                        <td><%= report.location_desc || "" %></td> 
+                        <td><%= report.comments || "" %></td>
                         <td style="vertical-align:middle">
-                        <img src="<%= '/data/' + report.photo_url %>" style="height:60px" >
+                         <% if not report.photo_url.nil? %>
+                            <img src="<%= '/data/' + report.photo_url %>" style="height:60px" >
+                          <% else %>
+                            No image available
+                          <% end %>
                         </td>
                         <td><%= link_to 'View', report %></td>
                       </tr>
