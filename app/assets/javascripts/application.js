@@ -14,7 +14,6 @@
 //= require jquery.dd.min
 //= require jquery_ujs
 //= require jquery.dataTables
-//= require turbolinks
 //= require_tree .
 
 
@@ -39,15 +38,15 @@ $(document).ready(function() {
     });
 
     $('#regnumber').blur(function(){
-        $.getJSON('/checkreg?regnumber=' + $(this).val(), function(data) {
-            if (data.valid == 'false') {
-                console.log('is false')
-                $('#validmark').show();
-                $('#invalidmark').hide();
-            } else {
-                console.log('is not false')
+        var url = '/checkreg?regnumber=' + $(this).val();
+        $.getJSON(url, function(data) {
+            console.log(data.valid);
+            if (!data.valid) {
                 $('#validmark').hide();
                 $('#invalidmark').show();
+            } else {
+                $('#validmark').show();
+                $('#invalidmark').hide();
             }
         });
     });

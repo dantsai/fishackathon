@@ -22,7 +22,8 @@ class LicensesController < ApplicationController
   end
 
   def check_license
-    if Registration.exists?(:registration_number => params['regnumber'])
+    puts params['regnumber']
+    if Registration.exists?('registration_number' => params['regnumber'])
       render json: { "valid" => true} 
     else
       render json: { "valid" => false} 
