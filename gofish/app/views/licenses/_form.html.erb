@@ -15,12 +15,12 @@
   <div class="container">
   <form>
   <div class="formfield">
-    <p class="left2 formdescription">Registration number:</p>
+    <p class="left2 formdescription">Registration Number</p>
     <input type="text" name="regnumber" id="regnumber">
   </div>
 
   <div class="formfield"> 
-    <p class="left2 formdescription">Fishing Location:</p>
+    <p class="left2 formdescription">Fishing Location</p>
     <%= f.text_area :location_desc, :rows => 8 %>
   </div>
 
@@ -28,40 +28,22 @@
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Net Type</p>
-    <select>
-<!--      options found at http://fishwise.org/index.php/science/production-method-guide -->
-      <option value="0">Bottom Trawl</option>
-      <option value="1">Midwater Trawl</option>
-      <option value="2">Gillnet</option>
-      <option value="3">Purse Seine: FAD</option>
-      <option value="4">Purse Seine: FAD Free</option>
-    </select>
+    <%= f.select :net_type, Enum.NET_TYPES %>
   </div>
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Hooks and Lines</p>
-    <select>
-      <option value="0">Longline</option>
-      <option value="1">Bottom Longline</option>
-      <option value="2">Handline</option>
-    </select>
+    <%= f.select :hook_line_type, Enum.LINE_TYPES %>
   </div>
-
-  
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Other Gear Used </p>
-    <select>
-      <option value="0">Dredge</option>
-      <option value="1">Trap</option>
-      <option value="2">Hand Methods</option>
-      <option>None</option>
-    </select>
+    <%= f.select :other_gear, Enum.OTHER_GEAR_TYPES %>
   </div>
 
   <div class="formfield"> 
     <p class="left2 formdescription">Fish Type</p>
-    <%= f.select :fish_type, License::FISH_TYPES %>
+    <%= f.select :fish_type, Enum.FISH_TYPES %>
   </div>
 
   <div class="formfield"> 

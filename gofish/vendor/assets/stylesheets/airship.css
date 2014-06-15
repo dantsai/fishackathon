@@ -144,10 +144,10 @@
   form .row div { position: relative; }
   form .row .columns div { margin-bottom: 20px; }
 
-  input,select { width: 240px; height: 35px; padding: 0 4px; margin: 0 0 10px 0; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f;
+  input,select { width: 250px; height: 35px; padding: 0 4px; margin: 0 0 10px 0; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f;
     font: 1.1em 'Open Sans', sans-serif; font-weight:normal, -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; }
   input:focus { -webkit-box-shadow: 0px 0px 2px #1FB4DD; -moz-box-shadow: 0px 0px 2px #1FB4DD; border: 1px solid #1FB4DD; -webkit-transition: all 0.10s ease-in-out; -moz-transition: all 0.10s ease-in-out; }
-  textarea { width: 530px; height: 100px; padding: 7px 24px 0 7px; margin: 0 0 25px; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f; font: 0.938em 'Open Sans', sans-serif; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; vertical-align: bottom; overflow: auto; resize: none; }
+  textarea { width: 530px; height: 60px; padding: 4px; margin: 0 0 25px; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f; font: 0.938em 'Open Sans', sans-serif; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; vertical-align: bottom; overflow: auto; resize: none; }
   textarea:focus { border: 1px solid #1FB4DD; box-shadow: 0px 0px 2px #1FB4DD; -webkit-box-shadow: 0px 0px 2px #1FB4DD; -moz-box-shadow: 0px 0px 2px #1FB4DD; transition: all 0.10s ease-in-out; -webkit-transition: all 0.10s ease-in-out; -moz-transition: all 0.10s ease-in-out; }
   label { top: 6px; left: 9px; z-index: 1; cursor: text; font-size: 0.938em; }
   .error { color: #1FB4DD; position: relative; font-size: 0.938em; }

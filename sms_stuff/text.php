@@ -58,16 +58,37 @@
 
     //NEED TO FIGURE OUT HOW TO ACCEPT PICTURES!
 
-    //Logic for getting location information (last step in report flow)
-    if ($_SESSION['location'] == 1 && $_SESSION['action'] == 'report') {
+    //Capturing additional comment (last step in report flow)
+    if ($_SESSION['comment'] == 1 && $_SESSION['action'] == 'report') {
         
-        //grab the location information of the reported boat, and other variables from the cookie
-        $location = $_REQUEST['Body'];
+        //grab the additional comment
+        $comment = $_REQUEST['Body'];
+        
+        //callback cookie variables
         $regID = $_SESSION['regID'];
-        $action = $_SESSION['action'];
+        $location = $_SESSION['location'];
+        $comment = $_SESSION['comment'];
+        //$photoURL = $SESSION['photoURL']; //photos are not supported yet
 
         //save it to the session cookie
         $_SESSION['location'] = $location;  
+
+    //Post collected information to a url query string
+/*        $url = 'http://server.com/path';
+        $data = array('regID' => $regID, 'location' => $location, 'comment' => $comment);
+
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data),
+            ),
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+
+        var_dump($result);*/
 
         // now greet the sender
         header("content-type: text/xml");
@@ -83,18 +104,43 @@
         $_SESSION['regID'] = 0;
         $_SESSION['action'] = 0;
         $_SESSION['location'] = 0;
+        $_SESSION['comment'] = 0;
 
 }
 
-    //Logic for getting Reg ID
+
+    //Prompt for additional comment, capture location
+    else if ($_SESSION['location'] == 1 && $_SESSION['action'] == 'report') {
+
+        //get the location information
+        $location = $_REQUEST['Body'];
+
+        //save it to the session cookie
+        $_SESSION['location'] = $location;
+
+        //create a flag variable for the comment
+        $_SESSION['comment'] = 1;    
+
+        // now greet the sender
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Please provide any additional comments regarding what the boat is doing wrong.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+    //Prompt for location, capture Reg ID
     else if ($_SESSION['regID'] == 1 && $_SESSION['action'] == 'report') {
         
         //grab the registration ID of the boat, and other variables from the cookie
         $regID = $_REQUEST['Body'];
-        $action = $_SESSION['action'];
 
         //save it to the session cookie
         $_SESSION['regID'] = $regID;
+
+        //create a flag variable for the location
         $_SESSION['location'] = 1;    
 
         // now greet the sender
@@ -134,7 +180,6 @@
         ?>
         <Response>
             <Message>Please provide the ID number of the boat you are reporting.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
@@ -155,18 +200,36 @@
         $boatName = $_SESSION['boatName'];
         $phoneNumber = $_REQUEST['From'];     
         
+
         //generate a registration ID
         $regID = 123456;
 
-        //now send the message
+    //Post collected information to a url query string
+/*        $url = 'http://server.com/path';
+        $data = array('name' => $name, 'address' => $address, 'boatLocation' => $boatLocation, 'boatType' => $boatType, 'boatName' => $boatName, 'phoneNumber' => $phoneNumber, 'regID' => $regID);
+
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data),
+            ),
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+
+        var_dump($result);*/
+
+    //now send the message
         header("content-type: text/xml");
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
             <Message>
                 <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it to look like this.
-                <?php echo "\nName:" . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
-                <Media>https://demo.twilio.com/owl.png</Media>
+                <?php echo "\nName: " . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
+                <!--<Media>https://demo.twilio.com/owl.png</Media>-->
             </Message>
         </Response>
 
@@ -321,7 +384,7 @@
 <Response>
     <!--<Message><?php echo $name ?>, thanks for the message!</Message>-->
     
-    <Message>What do you want to do? Reply 
+    <Message>What do you want to do?
     1 for Report
     2 for Register
     </Message>

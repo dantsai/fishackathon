@@ -21,10 +21,16 @@ class RegistrationsController < ApplicationController
   def edit
   end
 
+  def create_from_text
+  	puts 'Incoming message for new registration'
+  end
+
   # POST /registrations
   # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
+    @registration.status = 0
+    #todo: generate registration_number
 
     respond_to do |format|
       if @registration.save
@@ -69,6 +75,8 @@ class RegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registration_params
-      params.require(:registration).permit(:status, :location_desc_string, :name, :phone_number, :photo_url, :boat_type, :registration_number)
+      params.require(:registration).permit(:status, :location_desc, 
+      	:name, :phone_number, :photo_url, :boat_length,
+      	:has_motor)
     end
 end

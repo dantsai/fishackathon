@@ -31,11 +31,6 @@ gem 'thin'
 # Annotate marks up models with db info
 gem 'annotate'
 
-# Active admin for admin interface
-# Potentially a problem later if we rely on updates from github and something changes, but
-# for now this is necessary for Rails 4 support
-gem 'activeadmin', github: 'gregbell/active_admin'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

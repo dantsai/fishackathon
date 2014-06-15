@@ -7,7 +7,7 @@
 
 <p>
   <strong>Location desc string,:</strong>
-  <%= @registration.location_desc_string, %>
+  <%= @registration.location_desc %>
 </p>
 
 <p>
@@ -26,8 +26,8 @@
 </p>
 
 <p>
-  <strong>Boat type:</strong>
-  <%= @registration.boat_type %>
+  <strong>Has Motor:</strong>
+  <%= @registration.has_motor %>
 </p>
 
 <p>
@@ -35,5 +35,4 @@
   <%= @registration.registration_number %>
 </p>
 
-<%= link_to 'Edit', edit_registration_path(@registration) %> |
-<%= link_to 'Back', registrations_path %>
+<%= link_to 'Back', admin_path %>
