@@ -13,10 +13,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
 <!-- <link rel="stylesheet" href="http://www.eleventhedition.com/wp-content/themes/airship/style.css"> -->
-<link rel="stylesheet" href="_css/airship.css">
+<link rel="stylesheet" href="../_css/airship.css">
 <!-- <link rel="stylesheet" href="http://www.eleventhedition.com/wp-content/themes/airship/js/carousel/flexslider.css"> -->
 <link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]><script src="http://www.eleventhedition.com/wp-content/themes/airship/js/html5shiv.js"></script><![endif]--> 
+
+<!-- css for adding images to dropdown -->
+<link rel="stylesheet" type="text/css" href="../_css/msdropdown/dd.css" />
 
 <meta name="description" content="Website Design / Designer in Glasgow, Scotland. A Web Design Agency Specialising in Website Design, Website Development, and Wordpress / Magento Themes."/>
 <link rel="canonical" href="http://www.eleventhedition.com/" />
@@ -41,64 +44,35 @@ a {color:#646464}a:hover {color:#1fb4dd}</style>
 
 <div class="container">
 	<div id="header" class="section">
-		<div class="one-half column left">
-			<h3 id="headtitle">FIFA Fish Manager 2014</h3>
-		</div>
-		<div class="one-half column right">
-			<h3 id="headlog"><a href="#">Log Out</a></h3>
+		<div class="sixteen columns left">
+			<h3 id="headtitle"><a href="index.html">FIFA Fish Manager 2014</a></h3>
 		</div>
 	</div>
 
-	<div class="tabs">
-	    <ul class="tab-links">
-	        <li class="active"><a href="#tab1">Registrations</a></li>
-	        <li><a href="#tab2">Licenses</a></li>
-	        <li><a href="#tab3">Reports</a></li>
-	    </ul>
-	 
-	    <div class="tab-content">
-	        <div id="tab1" class="tab active">
-	            <p class="table-title"><a href="#">&lt; Back to Reports</a></p>
-	            <table class="detailstable">
-	            	<tr>
-	            		<td class="detailstype">Report ID</td>
-	            		<td>12345</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="detailstype">Date of report</td>
-	            		<td>6/19/2014 5:03 PM</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="detailstype">Status</td>
-	            		<td>Pending action</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="detailstype">Location</td>
-	            		<td id="map-canvas"></td>
-	            	</tr>
-	            	<tr>
-	            		<td class="detailstype">Photo</td>
-	            		<td><img src="http://morleycanoes.com/wp-content/uploads/2013/01/canoe-1-980x475.jpg" width="490" height="237"></td>
-	            	</tr>
-	            </table>
+	<h1>Thank You</h1>
 
-	        </div>
-	        <div id="tab2" class="tab">
-	        </div>
-	        <div id="tab3" class="tab">
-	        </div>
+	<div class="sixteen columns center">
+	<p>Thank you for submitting your registration request. You will receive any updates via text message or phone call.</p>
+	<p>Thank you for submitting your licensing request. You will receive any updates via text message or phone call.</p>
+	<p>Thank you for submitting your report.</p>
 
-	    </div>
+	<p><a href="index.html">Go back</a></p>
 	</div>
 
-</div>
+</div>	<!-- container --> 
 
-<!-- jQuery, jQuery Fallback and Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://www.eleventhedition.com/wp-content/themes/airship/js/carousel/jquery.flexslider-min.js"></script>
-<script src="_js/script.js"></script>
-<script src="_js/license.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<!-- for adding images to the dropdown -->
+<script src="../_js/msdropdown/jquery-1.9.0.min.js"></script>
+<script src="../_js/msdropdown/jquery.dd.min.js"></script>
+<script language="javascript">
+	$(document).ready(function(e) {
+	try {
+	$("body select").msDropDown();
+	} catch(e) {
+	alert(e.message);
+	}
+	});
+</script>
 
 </body>
 </html>
