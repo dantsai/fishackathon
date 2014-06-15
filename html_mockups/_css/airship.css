@@ -745,6 +745,10 @@ select {
   font-weight: bold;
 }
 
+.fineprint {
+  font-size: 0.8em;
+}
+
 #latlong {
   color: #999;
   display: none;
