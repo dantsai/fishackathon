@@ -127,7 +127,6 @@
         ?>
         <Response>
             <Message>Please provide any additional comments regarding what the boat is doing wrong.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
@@ -149,7 +148,6 @@
         ?>
         <Response>
             <Message>Please provide the location where you saw the boat.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
@@ -227,7 +225,7 @@
         ?>
         <Response>
             <Message>
-                <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it to look like this.
+                <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it.
                 <?php echo "\nName: " . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
                 <!--<Media>https://demo.twilio.com/owl.png</Media>-->
             </Message>
@@ -277,7 +275,6 @@
         ?>
         <Response>
             <Message>Please reply with the name of your boat.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
@@ -378,17 +375,16 @@
     else {
 
     // now greet the sender
-    header("content-type: text/xml");
+    header("content-type: text/xml, image/png");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 <Response>
     <!--<Message><?php echo $name ?>, thanks for the message!</Message>-->
     
-    <Message>What do you want to do?
+    <Message><Body>What do you want to do?
     1 for Report
-    2 for Register
+    2 for Register</Body>    
     </Message>
-    <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
 </Response>
 
 <?php } ?>

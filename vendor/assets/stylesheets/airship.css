@@ -118,7 +118,11 @@
 /* Links
 ================================================== */
 
-	a, a:visited { color: #000; text-decoration: none; outline: 0; -webkit-transition: color 0.3s ease-out 0s; -moz-transition: color 0.3s ease-out 0s; -o-transition: color 0.3s ease-out 0s; transition: color 0.3s ease-out 0s;  }
+	a, a:visited { color: #000; text-decoration: none; outline: 0; 
+    -webkit-transition: color 0.3s ease-out 0s; 
+    -moz-transition: color 0.3s ease-out 0s; 
+    -o-transition: color 0.3s ease-out 0s; 
+    transition: color 0.3s ease-out 0s;  }
 	a:hover, a:focus { color: #1FB4DD; text-decoration: underline; }
 	p a, p a:visited { line-height: inherit; }
 
@@ -145,7 +149,7 @@
   form .row .columns div { margin-bottom: 20px; }
 
   input,select { width: 250px; height: 35px; padding: 0 4px; margin: 0 0 10px 0; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f;
-    font: 1.1em 'Open Sans', sans-serif; font-weight:normal, -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; }
+    font: 1.1em 'Open Sans', sans-serif; font-weight:normal; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; }
   input:focus { -webkit-box-shadow: 0px 0px 2px #1FB4DD; -moz-box-shadow: 0px 0px 2px #1FB4DD; border: 1px solid #1FB4DD; -webkit-transition: all 0.10s ease-in-out; -moz-transition: all 0.10s ease-in-out; }
   textarea { width: 530px; height: 60px; padding: 4px; margin: 0 0 25px; border: 1px solid #d3d4d5; border-top: 1px solid #a7aaad; background: #fffeff; border-right-color: #c2c7ca; border-left-color: #c2c7ca; color: #3a444f; font: 0.938em 'Open Sans', sans-serif; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; position: relative; z-index: 0; vertical-align: bottom; overflow: auto; resize: none; }
   textarea:focus { border: 1px solid #1FB4DD; box-shadow: 0px 0px 2px #1FB4DD; -webkit-box-shadow: 0px 0px 2px #1FB4DD; -moz-box-shadow: 0px 0px 2px #1FB4DD; transition: all 0.10s ease-in-out; -webkit-transition: all 0.10s ease-in-out; -moz-transition: all 0.10s ease-in-out; }
@@ -255,14 +259,7 @@
   @-ms-keyframes fadein {
       from { opacity: 0; }
       to   { opacity: 1; }
-  }â€‹
-
-  /* Opera */
-  @-o-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }â€‹
-
+  }
 
 /* Website Styles
 ================================================== */
