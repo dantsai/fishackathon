@@ -39,6 +39,7 @@
         $_SESSION['action'] = 0;
         $_SESSION['name'] = 0;
         $_SESSION['address'] = 0;
+        $_SESSION['comment'] = 0;
         $_SESSION['boatLocation'] = 0;
         $_SESSION['boatLength'] = 0;
         $_SESSION['boatName'] = 0;
@@ -58,8 +59,6 @@
 
 //The Report Flow//
 
-    //NEED TO FIGURE OUT HOW TO ACCEPT PICTURES!
-
     //Capturing additional comment (last step in report flow)
     if ($_SESSION['comment'] == 1 && $_SESSION['action'] == 'report') {
         
@@ -70,46 +69,32 @@
         $regID = $_SESSION['regID'];
         $location = $_SESSION['location'];
         $comment = $_SESSION['comment'];
-        //$photoURL = $SESSION['photoURL']; //photos are not supported yet
+        $phoneNumber = $_REQUEST['From'];   
 
         //save it to the session cookie
         $_SESSION['location'] = $location;  
 
-    //Post collected information to a url query string
-/*        $url = 'http://server.com/path';
-        $data = array('regID' => $regID, 'location' => $location, 'comment' => $comment);
+        //Post collected information to a url query string
+        $url = 'http://fishackathon.herokuapp.com/report/textpost';
+        $data = array('regID' => "$regID", 'location' => "$location", 'comment' => "$comment");
+        $url = $url . '?' . http_build_query($data);
+        $result = file_get_contents($url);
 
-        // use key 'http' even if you send the request to https://...
-        $options = array(
-            'http' => array(
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'POST',
-                'content' => http_build_query($data),
-            ),
-        );
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
+        //trying another way to send confirmation text
+        require "Services/Twilio.php";
+        $AccountSid = "ACff9f06e3e77389c8c7252a4250ec5136";
+        $AuthToken = "86350b0c021ec3e4ae05fa68b4b099b6";
+        $client = new Services_Twilio($AccountSid, $AuthToken);
+        $sms = $client->account->messages->sendMessage("510-447-1114",$phoneNumber,"Thank you for reporting this boat.");
 
-        var_dump($result);*/
 
-        // now greet the sender
-        header("content-type: text/xml");
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-        ?>
-        <Response>
-            <Message><?php echo "RegID: " . $regID ?>. Thank you for reporting this boat.</Message>
-        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
-        </Response>
-
-    <?php 
-    //clearing the cookie
+        //clearing the cookie
         $_SESSION['regID'] = 0;
         $_SESSION['action'] = 0;
         $_SESSION['location'] = 0;
         $_SESSION['comment'] = 0;
 
-}
-
+    }
 
     //Prompt for additional comment, capture location
     else if ($_SESSION['location'] == 1 && $_SESSION['action'] == 'report') {
@@ -153,26 +138,18 @@
         </Response>
     <?php }
 
-    else if($_REQUEST['Body'] == '1' && $_SESSION['boatLength'] == 0) { 
+    else if($_REQUEST['Body'] == '1') { 
         
         //need to store date, time, status, phone number, photo to the database
         // HOW TO STORE AN PHOTO THAT'S SENT FROM FISHERMAN?!
 
 
         //get the action variable if it exists
-        $action = $_SESSION['action'];
-
-        //if it doesn't, set it as 'report'
-        if(!strlen($action)) {
-            $action = 'report';
-
-            //Save it
-            $_SESSION['action'] = $action;
-        }
+        $action = 'report';
+        $_SESSION['action'] = $action;
 
         //create a variable for the regID
         $_SESSION['regID'] = 1;
-        //$uri = $_REQUEST['Uri'];
         
         // now greet the sender
         header("content-type: text/xml");
@@ -202,39 +179,21 @@
         $boatEngine = $_SESSION['boatEngine'];  
         
         //generate a registration ID
-        $regID = 123456;
+        $regID = 4126;
 
     //Post collected information to a url query string
-/*        $url = 'http://server.com/path';
+        $url = 'http://fishackathon.herokuapp.com/registration/textpost';
         $data = array('name' => $name, 'address' => $address, 'boatLocation' => $boatLocation, 'boatLength' => $boatLength, 'boatName' => $boatName, 'phoneNumber' => $phoneNumber, 'regID' => $regID);
+        $url = $url . '?' . http_build_query($data);
+        $result = file_get_contents($url);
 
-        // use key 'http' even if you send the request to https://...
-        $options = array(
-            'http' => array(
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'POST',
-                'content' => http_build_query($data),
-            ),
-        );
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
+        //trying another way to send confirmation text
+        require "Services/Twilio.php";
+        $AccountSid = "ACff9f06e3e77389c8c7252a4250ec5136";
+        $AuthToken = "86350b0c021ec3e4ae05fa68b4b099b6";
+        $client = new Services_Twilio($AccountSid, $AuthToken);
+        $sms = $client->account->messages->sendMessage("510-447-1114",$phoneNumber,"Thank you for registering. Please paint this number, $regID, on your canoe and take a picture of it.\nName: $name \nAddress: $address \nBoat Location: $boatLocation \nBoat Length: $boatLength \nHas Engine?: $boatEngine \nBoat Name: $boatName \nPhone Number: $phoneNumber");
 
-        var_dump($result);*/
-
-    //now send the message
-        header("content-type: text/xml");
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-        ?>
-        <Response>
-            <Message>
-                <Body>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it.
-                <?php echo "\nName: " . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Length: " . $boatLength . "\nHas Engine? " . $boatEngine . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Body>
-                <!--<Media>https://demo.twilio.com/owl.png</Media>-->
-            </Message>
-        </Response>
-
-
-    <?php 
     //clearing the cookie
     $_SESSION['action'] = 0;
     $_SESSION['name'] = 0;
