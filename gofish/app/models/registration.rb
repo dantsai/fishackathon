@@ -20,4 +20,9 @@
 
 class Registration < ActiveRecord::Base
 	has_many :licenses
+
+	def status_text
+		index = self.status || 0
+		Enum.REQUEST_STATUS[index]
+	end
 end
