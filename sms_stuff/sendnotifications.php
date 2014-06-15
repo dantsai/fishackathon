@@ -49,9 +49,10 @@
 
 			// the sms body
 			"Hey $name, reply to this message!"
-
-			
-		);
+ 
+ 			// Step 7: Add a url to the image media you want to send
+        	array("https://demo.twilio.com/owl.png", "https://demo.twilio.com/logo.png")
+    	);
 
 		// Display a confirmation message on the screen
 		echo "Sent message to $name";
