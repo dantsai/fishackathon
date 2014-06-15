@@ -48,7 +48,7 @@
 			$number,
 
 			// the sms body
-			"Hey $name, Fish Party at 6PM. Bring Sustainable Fish!"
+			"Hey $name, reply to this message!"
 
 			
 		);

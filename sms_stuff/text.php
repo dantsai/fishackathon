@@ -29,10 +29,36 @@
     if(!$name = $people[$_REQUEST['From']]) {
         $name = "Monkey";
     }
- 
+
+
+    //If 'reset' is typed into the body, reset the cookie
+
+    if($_REQUEST['Body'] == 'Reset'){
+        //clearing the cookie. Reset for debugging purposes
+        $_SESSION['regID'] = 0;
+        $_SESSION['action'] = 0;
+        $_SESSION['name'] = 0;
+        $_SESSION['address'] = 0;
+        $_SESSION['boatLocation'] = 0;
+        $_SESSION['boatType'] = 0;
+        $_SESSION['boatName'] = 0;
+        $_SESSION['location'] = 0;
+
+        // now greet the sender
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Cookies have been reset!</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
 //The Report Flow//
 
-    //Logic for getting location information
+    //NEED TO FIGURE OUT HOW TO ACCEPT PICTURES!
+
+    //Logic for getting location information (last step in report flow)
     if ($_SESSION['location'] == 1 && $_SESSION['action'] == 'report') {
         
         //grab the location information of the reported boat, and other variables from the cookie
@@ -41,17 +67,24 @@
         $action = $_SESSION['action'];
 
         //save it to the session cookie
-        $_SESSION['location'] = $location;    
+        $_SESSION['location'] = $location;  
 
         // now greet the sender
         header("content-type: text/xml");
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message><?php echo "Action: " . $action . " RegID: " . $regID ?>. Thank you for reporting this boat.</Message>
+            <Message><?php echo "RegID: " . $regID ?>. Thank you for reporting this boat.</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
-    <?php }
+
+    <?php 
+    //clearing the cookie
+        $_SESSION['regID'] = 0;
+        $_SESSION['action'] = 0;
+        $_SESSION['location'] = 0;
+
+}
 
     //Logic for getting Reg ID
     else if ($_SESSION['regID'] == 1 && $_SESSION['action'] == 'report') {
@@ -69,12 +102,12 @@
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message><?php echo $action ?>. Please provide the location where you saw the boat.</Message>
+            <Message>Please provide the location where you saw the boat.</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
-    else if($_REQUEST['Body'] == '1') { 
+    else if($_REQUEST['Body'] == '1' && $_SESSION['boatType'] == 0) { 
         
         //need to store date, time, status, phone number, photo to the database
         // HOW TO STORE AN PHOTO THAT'S SENT FROM FISHERMAN?!
@@ -106,7 +139,84 @@
     <?php }
 
 //Logic for Register flow
-    //input boat type step
+    //capture boat name and finish.
+    else if($_SESSION['boatName'] == 1 && $_SESSION['action'] == 'register') {
+
+        //set the body to a boat name variable
+        $boatName = $_REQUEST['Body'];
+
+        $_SESSION['boatName'] = $boatName;
+
+        //callback cookie variables
+        $name = $_SESSION['name'];
+        $address = $_SESSION['address'];
+        $boatLocation = $_SESSION['boatLocation'];
+        $boatType = $_SESSION['boatType'];
+        $boatName = $_SESSION['boatName'];
+        $phoneNumber = $_REQUEST['From'];     
+        
+        //generate a registration ID
+        $regID = 123456;
+
+        //now send the message
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Thank you for registering. Please paint this number, <?php echo $regID ?>, on your canoe and take a picture of it to look like this.
+            <MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>
+            <?php echo "\nName:" . $name . "\nAddress: " . $address . "\nBoat Location: " . $boatLocation . "\nBoat Type: " . $boatType . "\nBoat Name: " . $boatName . "\nPhone Number: " . $phoneNumber ?></Message>
+        </Response>
+
+
+    <?php 
+    //clearing the cookie
+    $_SESSION['action'] = 0;
+    $_SESSION['name'] = 0;
+    $_SESSION['address'] = 0;
+    $_SESSION['boatLocation'] = 0;
+    $_SESSION['boatType'] = 0;
+    $_SESSION['boatName'] = 0;
+    $_SESSION['location'] = 0;
+
+    }
+
+    //prompt boat name, capture boat type
+    else if($_SESSION['boatType'] == 1 && $_SESSION['action'] == 'register') {
+
+        //set the body to a boat type variable
+        $boatType = $_REQUEST['Body'];
+
+        //adding the boat type to the session cookie. Need to replace Boat Type A with the actual boat types
+        if($boatType == 1){
+            //set boat type into the session cookie
+            $_SESSION['boatType'] = 'Boat Type A';    
+        }
+        else if($boatType == 2){
+            //set boat type into session cookie
+            $_SESSION['boatType'] = 'Boat Type B';    
+        }
+        else if($boatType == 3){
+            //set boat type into session cookie
+            $_SESSION['boatType'] = 'Boat Type C';    
+        }
+
+        //NOTE: don't have anything to respond to an incorrect response!        
+        
+        //create a flag variable for the boat name
+        $_SESSION['boatName'] = 1;
+
+        // now send the message
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Please reply with the name of your boat.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+    //prompt boat type step, capture boat location
     else if($_SESSION['boatLocation'] == 1 && $_SESSION['action'] == 'register') {
 
         //set the body to a boat location variable
@@ -123,12 +233,15 @@
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message>Please reply with the type of boat you are registering. 1 for BoatType A, 2 for BoatType B, 3 for BoatType 3.</Message>
+            <Message>Please reply with the type of boat you are registering.
+            '1' for BoatType A
+            '2' for BoatType B
+            '3' for BoatType C</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
 
-    //input boat location step
+    //prompt boat location step and capture address
     else if($_SESSION['address'] == 1 && $_SESSION['action'] == 'register') {
 
         //set the body to an address variable
@@ -150,7 +263,28 @@
         </Response>
     <?php }
 
-    //input address step
+ //prompt for address step, and capture name
+    else if($_SESSION['name'] == 1 && $_SESSION['action'] == 'register') {    
+
+        $name = $_REQUEST['Body'];
+
+        //Save it
+        $_SESSION['name'] = $name;
+
+        //create a flag variable for the address
+        $_SESSION['address'] = 1;
+        
+        // now greet the sender
+        header("content-type: text/xml");
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        ?>
+        <Response>
+            <Message>Please reply back with your address.</Message>
+        <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
+        </Response>
+    <?php }
+
+    //prompt for name step, and capture action
     else if($_REQUEST['Body'] == '2') {    
 
         //get the action variable if it exists
@@ -163,15 +297,15 @@
             $_SESSION['action'] = $action;
         }
 
-        //create a flag variable for the address
-        $_SESSION['address'] = 1;
+        //create a flag variable for the name
+        $_SESSION['name'] = 1;
         
         // now greet the sender
         header("content-type: text/xml");
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
         <Response>
-            <Message><?php echo $action ?>. Please reply back with your address.</Message>
+            <Message>Please reply back with your name.</Message>
         <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
         </Response>
     <?php }
@@ -185,7 +319,10 @@
 <Response>
     <!--<Message><?php echo $name ?>, thanks for the message!</Message>-->
     
-    <Message>What do you want to do? Reply '1' for Report, '2' for Register, '3' for License. This was your body message: <?php echo $_REQUEST['Body'] ?></Message>
+    <Message>What do you want to do? Reply 
+    '1' for Report
+    '2' for Register
+    '3' for License.</Message>
     <!--<MediaUrl>https://demo.twilio.com/owl.png</MediaUrl>-->
 </Response>
 
