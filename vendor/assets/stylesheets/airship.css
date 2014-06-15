@@ -209,6 +209,7 @@
 
 select {
   width: 270px;
+  size:2;
 }
 
 /* Menu
@@ -267,13 +268,8 @@ select {
   @-ms-keyframes fadein {
       from { opacity: 0; }
       to   { opacity: 1; }
-  }â€‹
+  }
 
-  /* Opera */
-  @-o-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }â€‹
 
 
 /* Website Styles
