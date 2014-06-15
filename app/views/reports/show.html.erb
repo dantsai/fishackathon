@@ -2,17 +2,17 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @report.status_text %>
+  <%= @report.status_text || "" %>
 </p>
 
 <p>
   <strong>Location Description:</strong>
-  <%= @report.location_desc %>
+  <%= @report.location_desc || "" %>
 </p>
 
 <p>
   <strong>Comments:</strong>
-  <%= @report.comments %>
+  <%= @report.comments || "" %>
 </p>
 
 <p>
