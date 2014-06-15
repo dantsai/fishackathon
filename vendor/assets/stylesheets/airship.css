@@ -51,8 +51,8 @@
 
   :required { -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none; -ms-box-shadow: none; box-shadow: none; }
   :focus {outline: 0;}
-		
-		
+    
+    
 /* Basic Styles
 ================================================== */
 
@@ -98,46 +98,46 @@
   h2, .h2 { font-size: 1.8em; margin-bottom: 20px; }
   h3, .h3 { font-size: 1.8em; margin: 30px 0; }
 
-	p { font-size: 1em; font-style: normal; text-align: left; margin: 0 0 15px; }
-	p img { margin: 0; }
-	p.lead { font-size: 1.250em; color: #777; }
+  p { font-size: 1em; font-style: normal; text-align: left; margin: 0 0 15px; }
+  p img { margin: 0; }
+  p.lead { font-size: 1.250em; color: #777; }
 
-	em { font-style: italic; }
-	strong { font-weight: bold; }
-	small { font-size: 80%; }
+  em { font-style: italic; }
+  strong { font-weight: bold; }
+  small { font-size: 80%; }
 
-	blockquote, blockquote p { font-size: 1em; color: #777; font-style: italic; }
-	blockquote { margin: 0 0 20px; padding: 10px 20px 0; }
-	blockquote cite { display: block; font-size: 0.750em; color: #555; }
-	blockquote cite:before { content: "\2014 \0020"; }
-	blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
-	
-	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 20px; height: 0; }
+  blockquote, blockquote p { font-size: 1em; color: #777; font-style: italic; }
+  blockquote { margin: 0 0 20px; padding: 10px 20px 0; }
+  blockquote cite { display: block; font-size: 0.750em; color: #555; }
+  blockquote cite:before { content: "\2014 \0020"; }
+  blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
+  
+  hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 20px; height: 0; }
 
 
 /* Links
 ================================================== */
 
-	a, a:visited { color: #000; text-decoration: none; outline: 0; 
+  a, a:visited { color: #000; text-decoration: none; outline: 0; 
     -webkit-transition: color 0.3s ease-out 0s; 
     -moz-transition: color 0.3s ease-out 0s; 
     -o-transition: color 0.3s ease-out 0s; 
     transition: color 0.3s ease-out 0s;  }
-	a:hover, a:focus { color: #1FB4DD; text-decoration: underline; }
-	p a, p a:visited { line-height: inherit; }
+  a:hover, a:focus { color: #1FB4DD; text-decoration: underline; }
+  p a, p a:visited { line-height: inherit; }
 
 
 /* Lists
 ================================================== */
 
-	ul, ol { margin-bottom: 20px; }
-	ul { list-style: none outside; }
-	ol { list-style: decimal; }
-	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
-	ul.square { list-style: square outside; }
-	ul.circle { list-style: circle outside; }
-	ul.disc { list-style: disc outside; }
-	li { margin-bottom: 10px; }
+  ul, ol { margin-bottom: 20px; }
+  ul { list-style: none outside; }
+  ol { list-style: decimal; }
+  ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+  ul.square { list-style: square outside; }
+  ul.circle { list-style: circle outside; }
+  ul.disc { list-style: disc outside; }
+  li { margin-bottom: 10px; }
 
 
 /* Forms and Buttons
@@ -220,13 +220,13 @@
 /* Misc
 ================================================== */
 
-	.add-top { margin-top: 30px !important; }
-	.add-bottom { margin-bottom: 40px !important; }
-	.remove-top { margin-top: 0 !important; }
-	.remove-bottom { margin-bottom: 0 !important; }
-	.clear { clear: both; }
-	.left { float: left !important; }
-	.right { float: right !important; }
+  .add-top { margin-top: 30px !important; }
+  .add-bottom { margin-bottom: 40px !important; }
+  .remove-top { margin-top: 0 !important; }
+  .remove-bottom { margin-bottom: 0 !important; }
+  .clear { clear: both; }
+  .left { float: left !important; }
+  .right { float: right !important; }
   .center { text-align: center; }
   .center2 { margin: 0 auto; }
   .right2 { text-align: right; }

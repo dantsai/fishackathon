@@ -28,27 +28,55 @@
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Net Type</p>
-    <%= f.select :net_type, Enum.NET_TYPES %>
+    <select name="license[net_type]">
+<!-- options found at http://fishwise.org/index.php/science/production-method-guide -->
+<!-- pictures for types found at http://fishwise.org/images/stories/private_pdfs/info_binder_2010.pdf -->
+      <option>Choose your net type</option>
+      <option value="0" data-image="<%= image_path('BottomTrawl.png') %>">Bottom Trawl</option>
+      <option value="1" data-image="<%= image_path('midwaterTrawl.png') %>">Midwater Trawl</option>
+      <option value="2" data-image="<%= image_path('gillnet.png') %>">Gillnet</option>
+      <option value="3" data-image="<%= image_path('PurseSeine.png') %>">Purse Seine: FAD</option>
+      <option value="4" data-image="<%= image_path('PurseSeine.png') %>">Purse Seine: FAD Free</option>
+    </select>
   </div>
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Hooks and Lines</p>
-    <%= f.select :hook_line_type, Enum.LINE_TYPES %>
+     <select name="license[hook_line_type]">
+<!-- options found at http://fishwise.org/index.php/science/production-method-guide -->
+<!-- pictures for types found at http://fishwise.org/images/stories/private_pdfs/info_binder_2010.pdf -->
+      <option>Choose your net type</option>
+      <option value="0" data-image="<%= image_path('Longline.png') %>">Longline</option>
+      <option value="1" data-image="<%= image_path('BottomLongline.png') %>">Bottom Longline</option>
+      <option value="2" data-image="<%= image_path('Handline.png') %>">Handline</option>
+    </select>
+
   </div>
 
   <div class="formfield subquestion"> 
     <p class="left2 formdescription">Other Gear Used </p>
-    <%= f.select :other_gear, Enum.OTHER_GEAR_TYPES %>
+    <select name="license[other_gear]">
+       <option>Select any other gear</option>
+       <option data-image="<%= image_path('Dredge.png') %>" value="0">Dredge</option>
+       <option data-image="<%= image_path('Traps.png') %>" value="1">Trap</option>
+       <option data-image="<%= image_path('HandMethods.png') %>" value="2">Hand Methods</option>
+       <option>None</option>
+    </select>
   </div>
 
-  <div class="formfield"> 
-    <p class="left2 formdescription">Fish Type</p>
-    <%= f.select :fish_type, Enum.FISH_TYPES %>
+  <div class="picselect"> 
+    <p>Type of fish</p>
+    <input type="radio" name="license[fish_type]" id="small" value="0" /><label for="small">
+    <%= image_tag('sardines-pic.jpg') %></label><br>
+    <input type="radio" name="license[fish_type]" id="large" value="1" /><label for="large">
+    <%= image_tag('tuna-pic.jpg') %></label>
   </div>
+
 
   <div class="formfield"> 
     <%= f.submit %>
   </div>
-</div>  <!-- container --> 
 
 <% end %>
+
+<p class="fineprint">Gear icons from <a href="http://www.fishwise.org/">fishwise.org</a></p>

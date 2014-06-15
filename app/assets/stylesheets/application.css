@@ -23,6 +23,6 @@ h1,h2,h3,h4,h5,h6 { color:#383838; font-family:Oswald, sans-serif; font-weight:N
 .intro p { color:#646464; font-family:Open Sans, sans-serif; font-weight:Normal; font-size:20px; }
 .quote p { color:#646464; font-family:Open Sans, sans-serif; font-weight:Normal; font-size:20px; }
 a {color:#646464}a:hover {color:#1fb4dd}
-input[type='checkbox'] { width: 30px;}
+input[type='checkbox'],input[type='radio'] { width: 30px; margin-right:5px;}
 input[type='file'] { border: none; font-size:.9em;}
 label.checkbox { position:relative; top:-14px;}
